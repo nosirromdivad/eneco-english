@@ -49,6 +49,28 @@
   .btn.warn{background:var(--gold);color:var(--ink)}
   .btn.warn:hover{background:#d4a716}
 
+  /* Audio Button Styling */
+  .btn-audio {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--green);
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 13px;
+    margin-left: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    vertical-align: middle;
+  }
+  .btn-audio:hover {
+    background: var(--grass);
+    border-color: var(--green);
+    transform: scale(1.05);
+  }
+
   .q{padding:14px 0;border-top:1px solid var(--line)}
   .q:first-of-type{border-top:none}
   .q-num{display:inline-block;background:var(--green);color:#fff;width:24px;height:24px;
@@ -195,7 +217,7 @@
 /* =========================  DATA  ========================= */
 
 const data = {
-  p1: [ // translations: accept multiple forms (normalised)
+  p1: [ 
     { es:"He vivido en esta ciudad desde que tenía diez años.",
       answers:["i have lived in this city since i was ten years old",
                "i have lived in this city since i was ten",
@@ -263,7 +285,7 @@ const data = {
       model:"How many goals has that striker scored this season?" },
   ],
 
-  p2: { // matching
+  p2: { 
     terms: [
       {id:1, t:"Hamstring Strain", a:"F"},
       {id:2, t:"ACL Tear",          a:"G"},
@@ -359,6 +381,21 @@ const STORAGE_KEY = 'eneco_english_progress_v1';
 const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
 function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
+/* =========================  AUDIO ENGINE ========================= */
+function speakText(text) {
+  if ('speechSynthesis' in window) {
+    // Cancel any current utterances playing to prevent overlap queuing
+    window.speechSynthesis.cancel(); 
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-GB'; // Sets native UK English voice engine
+    utterance.rate = 0.85;    // Comfortably paced for language learners
+    window.speechSynthesis.speak(utterance);
+  } else {
+    alert("Audio generation is not supported on this device/browser.");
+  }
+}
+
 /* =========================  HELPERS  ========================= */
 function norm(s){
   return (s||"").toString().toLowerCase()
@@ -380,6 +417,11 @@ function renderTextSection(panelId, items){
     const qEl = document.createElement('div');
     qEl.className = 'q';
     qEl.dataset.idx = realIdx;
+    
+    // Determine target pronunciation data depending on section model output
+    const isSentenceMode = panelId === 'p1';
+    const audioTarget = isSentenceMode ? item.model.replace(/"/g, '&quot;') : item.model;
+    
     qEl.innerHTML = `
       <span class="q-num">${idx+1}</span>
       <span class="q-text">${item.es || item.sentence}</span>
@@ -388,6 +430,7 @@ function renderTextSection(panelId, items){
         <button class="btn small" onclick="checkOne('${panelId}',${realIdx},this)">Check</button>
         <button class="btn ghost small" onclick="toggleHint(this)">💡 Hint</button>
         <button class="btn ghost small" onclick="showModel('${panelId}',${realIdx},this)">👁 Show answer</button>
+        <button class="btn-audio" title="Listen Pronunciation" onclick="speakText('${audioTarget}')">🔊 Pronounce</button>
       </div>
       <div class="hint">${item.hint}</div>
       <div class="feedback"></div>
@@ -472,9 +515,14 @@ function renderMatchSection(panelId){
     const row = document.createElement('div');
     row.className = 'match-row';
     const opts = block.defs.map(d => `<option value="${d.k}" ${stored.choice===d.k?'selected':''}>${d.k}</option>`).join('');
+    
+    // Sanitize string to bypass potential quotes breakdown inside DOM actions
+    const protectedTerm = t.t.replace(/'/g, "\\'");
+    
     row.innerHTML = `
       <strong>${t.id}.</strong>
       <span style="flex:1">${t.t}</span>
+      <button class="btn-audio" title="Listen Term" onclick="speakText('${protectedTerm}')">🔊</button>
       <select data-id="${t.id}">
         <option value="">—</option>
         ${opts}
