@@ -93,7 +93,7 @@
     border-radius:4px;font-size:13px;display:none;color:#7a5a00}
   .hint.show{display:block}
 
-  /* Matching */
+  /* Matching Grid Layout */
   .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;margin-top:8px}
   @media (max-width:600px){.match-grid{grid-template-columns:1fr}}
   .match-row{display:flex;gap:8px;align-items:center;padding:8px;background:#fde8e8;
@@ -105,16 +105,13 @@
 
   footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}
   footer .reset-all{color:var(--red);cursor:pointer;text-decoration:underline}
-
-  .progress-bar{height:4px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:6px}
-  .progress-bar > div{height:100%;background:var(--green);transition:width .3s}
 </style>
 </head>
 <body>
 
 <header>
   <h1>⚽ Eneco's English Practice</h1>
-  <p>Present Perfect · Football injuries · Babies · Stadium parts · Prepositions</p>
+  <p>Present perfect · Football injuries · Babies · Stadium parts · Prepositions</p>
 </header>
 
 <div class="container">
@@ -162,7 +159,7 @@
   <div class="panel" id="p3">
     <div class="card">
       <h2>Part 3 — Baby & Infant Vocabulary</h2>
-      <p class="lead">Choose the right word from: <strong>nappy · pushchair · toddler · wean · dummy</strong>. Change the form if necessary.</p>
+      <p class="lead">Choose the right word from: <strong>nappy · pushchair · toddler · wean · dummy</strong>.</p>
       <div class="toolbar">
         <button class="btn small" onclick="checkAll('p3')">Check all</button>
         <button class="btn ghost small" onclick="resetSection('p3')">↻ Reset</button>
@@ -194,8 +191,8 @@
     <div class="card">
       <h2>Part 5 — Prepositions of Time</h2>
       <p class="lead">
-        <strong>AT</strong> – clock times, mealtimes, holidays · <strong>ON</strong> – days &amp; dates ·
-        <strong>IN</strong> – months, years, seasons, parts of the day.
+        <strong>at</strong> – clock times, mealtimes, holidays · <strong>on</strong> – days &amp; dates ·
+        <strong>in</strong> – months, years, seasons, parts of the day.
       </p>
       <div class="toolbar">
         <button class="btn small" onclick="checkAll('p5')">Check all</button>
@@ -215,7 +212,6 @@
 
 <script>
 /* =========================  DATA  ========================= */
-
 const data = {
   p1: [ 
     { es:"He vivido en esta ciudad desde que tenía diez años.",
@@ -256,7 +252,7 @@ const data = {
       model:"Have you ever been to a live match at the Emirates Stadium?" },
 
     { es:"Ella ya ha asistido a tres seminarios sobre rehabilitación este año.",
-      answers:["she has already attended three seminars on rehabilitation this year",
+      answers:["she has already edited three seminars on rehabilitation this year",
                "she has already attended three rehabilitation seminars this year",
                "she's already attended three rehabilitation seminars this year",
                "she's already attended three seminars on rehabilitation this year"],
@@ -287,14 +283,14 @@ const data = {
 
   p2: { 
     terms: [
-      {id:1, t:"Hamstring Strain", a:"F"},
-      {id:2, t:"ACL Tear",          a:"G"},
+      {id:1, t:"Hamstring strain", a:"F"},
+      {id:2, t:"ACL tear",          a:"G"},
       {id:3, t:"Concussion",        a:"E"},
       {id:4, t:"Fracture",          a:"A"},
-      {id:5, t:"Ankle Sprain",      a:"C"},
-      {id:6, t:"Groin Strain",      a:"I"},
+      {id:5, t:"Ankle sprain",      a:"C"},
+      {id:6, t:"Groin strain",      a:"I"},
       {id:7, t:"Tendinitis",        a:"D"},
-      {id:8, t:"Shin Splints",      a:"B"},
+      {id:8, t:"Shin splints",      a:"B"},
       {id:9, t:"Dislocation",       a:"H"},
       {id:10,t:"Contusion",         a:"J"},
     ],
@@ -327,16 +323,16 @@ const data = {
 
   p4: {
     terms: [
-      {id:1,  t:"The Pitch",            a:"D"},
-      {id:2,  t:"The Dugout",           a:"H"},
-      {id:3,  t:"The Terraces / Stands",a:"E"},
-      {id:4,  t:"The Turnstile",        a:"F"},
-      {id:5,  t:"The Touchline",        a:"A"},
-      {id:6,  t:"The Penalty Box",      a:"B"},
-      {id:7,  t:"The Concourse",        a:"J"},
-      {id:8,  t:"The Press Box",        a:"G"},
-      {id:9,  t:"The Crossbar",         a:"C"},
-      {id:10, t:"The Technical Area",   a:"I"},
+      {id:1,  t:"The pitch",            a:"D"},
+      {id:2,  t:"The dugout",           a:"H"},
+      {id:3,  t:"The terraces / stands",a:"E"},
+      {id:4,  t:"The turnstile",        a:"F"},
+      {id:5,  t:"The touchline",        a:"A"},
+      {id:6,  t:"The penalty box",      a:"B"},
+      {id:7,  t:"The concourse",        a:"J"},
+      {id:8,  t:"The press box",        a:"G"},
+      {id:9,  t:"The crossbar",         a:"C"},
+      {id:10, t:"The technical area",   a:"I"},
     ],
     defs: [
       {k:"A", d:"The boundary line that runs along the side of the field, marking the edge of the playing area."},
@@ -384,15 +380,11 @@ function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 /* =========================  AUDIO ENGINE ========================= */
 function speakText(text) {
   if ('speechSynthesis' in window) {
-    // Cancel any current utterances playing to prevent overlap queuing
     window.speechSynthesis.cancel(); 
-    
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-GB'; // Sets native UK English voice engine
-    utterance.rate = 0.85;    // Comfortably paced for language learners
+    utterance.lang = 'en-GB'; 
+    utterance.rate = 0.85;    
     window.speechSynthesis.speak(utterance);
-  } else {
-    alert("Audio generation is not supported on this device/browser.");
   }
 }
 
@@ -407,7 +399,7 @@ function shuffle(arr){
   return a;
 }
 
-/* =========================  RENDER PART 1, 3, 5 (gap-fill / translation)  ========================= */
+/* =========================  RENDER GAP FILLERS  ========================= */
 function renderTextSection(panelId, items){
   const wrap = document.getElementById(panelId+'-questions');
   wrap.innerHTML = '';
@@ -418,9 +410,13 @@ function renderTextSection(panelId, items){
     qEl.className = 'q';
     qEl.dataset.idx = realIdx;
     
-    // Determine target pronunciation data depending on section model output
-    const isSentenceMode = panelId === 'p1';
-    const audioTarget = isSentenceMode ? item.model.replace(/"/g, '&quot;') : item.model;
+    const audioTarget = item.model ? item.model.replace(/"/g, '&quot;') : '';
+    
+    // Conditionally include pronunciation button based on section
+    const includeAudioButton = panelId !== 'p5';
+    const audioButtonHTML = includeAudioButton 
+      ? `<button class="btn-audio" title="Listen Pronunciation" onclick="speakText('${audioTarget}')">🔊 Pronounce</button>`
+      : '';
     
     qEl.innerHTML = `
       <span class="q-num">${idx+1}</span>
@@ -430,13 +426,12 @@ function renderTextSection(panelId, items){
         <button class="btn small" onclick="checkOne('${panelId}',${realIdx},this)">Check</button>
         <button class="btn ghost small" onclick="toggleHint(this)">💡 Hint</button>
         <button class="btn ghost small" onclick="showModel('${panelId}',${realIdx},this)">👁 Show answer</button>
-        <button class="btn-audio" title="Listen Pronunciation" onclick="speakText('${audioTarget}')">🔊 Pronounce</button>
+        ${audioButtonHTML}
       </div>
       <div class="hint">${item.hint}</div>
       <div class="feedback"></div>
     `;
     wrap.appendChild(qEl);
-    // restore visual state
     if(stored.checked){
       const fb = qEl.querySelector('.feedback');
       fb.className = 'feedback show ' + (stored.correct ? 'ok' : 'bad');
@@ -495,12 +490,11 @@ function resetSection(panelId){
 }
 
 function shuffleSection(panelId){
-  // re-render in random order, preserve original indices for answer lookup
   const items = data[panelId].map((it,i)=>({...it, _origIdx:i}));
   renderTextSection(panelId, shuffle(items));
 }
 
-/* =========================  RENDER PART 2, 4 (matching)  ========================= */
+/* =========================  RENDER MATCHING PANELS  ========================= */
 function renderMatchSection(panelId){
   const block = data[panelId];
   block.terms.forEach((t,i)=>t._origIdx=i);
@@ -516,7 +510,6 @@ function renderMatchSection(panelId){
     row.className = 'match-row';
     const opts = block.defs.map(d => `<option value="${d.k}" ${stored.choice===d.k?'selected':''}>${d.k}</option>`).join('');
     
-    // Sanitize string to bypass potential quotes breakdown inside DOM actions
     const protectedTerm = t.t.replace(/'/g, "\\'");
     
     row.innerHTML = `
@@ -559,7 +552,7 @@ function shuffleMatchDefs(panelId){
   renderMatchSection(panelId);
 }
 
-/* =========================  SCORING  ========================= */
+/* =========================  TRACKING PROGRESS  ========================= */
 function updateScore(panelId){
   const el = document.getElementById('score-'+panelId);
   let total, correct = 0;
@@ -575,7 +568,7 @@ function updateScore(panelId){
   el.textContent = `${correct} / ${total}`;
 }
 
-/* =========================  TABS  ========================= */
+/* =========================  NAVIGATION TABS  ========================= */
 document.querySelectorAll('.tab').forEach(t => {
   t.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
@@ -591,7 +584,7 @@ function resetAll(){
   location.reload();
 }
 
-/* =========================  INIT  ========================= */
+/* =========================  INITIALIZE APPLICATIONS  ========================= */
 ['p1','p3','p5'].forEach(p => {
   data[p].forEach((it,i)=>it._origIdx=i);
   renderTextSection(p, data[p]);
