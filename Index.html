@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Eneco's English Practice ⚽</title>
+
+<style>
+
+  :root{
+
+    --green:#EF0107; --green-dk:#9B0000; --grass:#fde8e8;
+
+    --gold:#C4973B; --red:#9B0000; --ink:#1a1a1a; --muted:#6b7785;
+
+    --line:#e8d5d5; --bg:#fff8f8; --card:#ffffff;
+
+  }
+
+  *{box-sizing:border-box}
+
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+
+    line-height:1.55;}
+
+  header{
+
+    background:linear-gradient(135deg,#9B0000 0%,#EF0107 50%,#9B0000 100%);
+
+    color:#fff;padding:28px 20px;text-align:center;position:relative;overflow:hidden;
+
+  }
+
+  header::before{content:"";display:none}
+
+  .container{max-width:880px;margin:0 auto;padding:20px}
+
+  /* Class switcher */
+
+  .class-switcher{display:flex;gap:10px;margin:18px 0 0;justify-content:center}
+
+  .class-btn{padding:10px 28px;border-radius:30px;border:2px solid #EF0107;
+
+    font-size:14px;font-weight:700;cursor:pointer;background:#fff;color:#9B0000;
+
+    font-family:inherit;transition:all .18s}
+
+  .class-btn.active{background:#EF0107;color:#fff;box-shadow:0 3px 10px rgba(239,1,7,.35)}
+
+  .class-btn:hover:not(.active){background:#fde8e8}
+
+  .class-panel{display:none}
+
+  .class-panel.active{display:block}
+
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0;
+
+    background:var(--card);padding:8px;border-radius:12px;border:1px solid var(--line);
+
+    box-shadow:0 1px 3px rgba(0,0,0,.04)}
+
+  .tab{flex:1;min-width:140px;text-align:center;padding:11px 8px;border-radius:8px;
+
+    cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);
+
+    transition:all .15s;border:none;background:transparent;font-family:inherit}
+
+  .tab:hover{background:#fde8e8;color:var(--green-dk)}
+
+  .tab.active{background:#EF0107;color:#fff;box-shadow:0 2px 8px rgba(239,1,7,.35)}
+
+  .panel{display:none;animation:fadeIn .3s ease}
+
+  .panel.active{display:block}
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+
+    padding:22px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+
+  .card h2{margin:0 0 8px;color:var(--green-dk);font-size:20px}
+
+  .card .lead{color:var(--muted);font-size:14px;margin:0 0 16px}
+
+
+
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+
+  .score{margin-left:auto;background:#fde8e8;color:var(--green-dk);
+
+    padding:6px 12px;border-radius:20px;font-weight:600;font-size:13px}
+
+  .btn{background:var(--green);color:#fff;border:none;padding:8px 14px;border-radius:8px;
+
+    cursor:pointer;font-size:13px;font-weight:600;font-family:inherit;transition:all .15s}
+
+  .btn:hover{background:var(--green-dk)}
+
+  .btn.ghost{background:transparent;color:var(--green-dk);border:1px solid var(--green)}
+
+  .btn.ghost:hover{background:var(--grass)}
+
+  .btn.small{padding:5px 10px;font-size:12px}
+
+  .btn.warn{background:var(--gold);color:var(--ink)}
+
+  .btn.warn:hover{background:#d4a716}
+
+
+
+  /* Audio Button Styling */
+
+  .btn-audio {
+
+    background: transparent;
+
+    border: 1px solid var(--line);
+
+    color: var(--green);
+
+    cursor: pointer;
+
+    border-radius: 6px;
+
+    padding: 3px 8px;
+
+    font-size: 13px;
+
+    margin-left: 6px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: all 0.15s ease;
+
+    vertical-align: middle;
+
+  }
+
+  .btn-audio:hover {
+
+    background: var(--grass);
+
+    border-color: var(--green);
+
+    transform: scale(1.05);
+
+  }
+
+
+
+  .q{padding:14px 0;border-top:1px solid var(--line)}
+
+  .q:first-of-type{border-top:none}
+
+  .q-num{display:inline-block;background:var(--green);color:#fff;width:24px;height:24px;
+
+    border-radius:50%;text-align:center;line-height:24px;font-size:12px;font-weight:700;
+
+    margin-right:8px;vertical-align:middle}
+
+  .q-text{font-weight:500;display:inline}
+
+  .q-es{display:block;color:var(--muted);font-style:italic;font-size:14px;margin:4px 0 10px 32px}
+
+  input.answer,select.answer{
+
+    width:100%;max-width:520px;padding:9px 12px;border:1px solid var(--line);
+
+    border-radius:8px;font-size:14px;font-family:inherit;margin:8px 0}
+
+  input.answer:focus,select.answer:focus{outline:none;border-color:var(--green);
+
+    box-shadow:0 0 0 3px rgba(239,1,7,.15)}
+
+  .q-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+
+  .feedback{margin-top:8px;padding:10px 12px;border-radius:8px;font-size:14px;display:none}
+
+  .feedback.show{display:block}
+
+  .feedback.ok{background:#fff0f0;color:#9B0000;border:1px solid #f5b8b8}
+
+  .feedback.bad{background:#fdecea;color:var(--red);border:1px solid #f5c6c1}
+
+  .feedback .model{display:block;margin-top:4px;font-style:italic;color:var(--ink)}
+
+  .hint{margin-top:6px;padding:8px 12px;background:#fff8e1;border-left:3px solid #C4973B;
+
+    border-radius:4px;font-size:13px;display:none;color:#7a5a00}
+
+  .hint.show{display:block}
+
+
+
+  /* Error correction specific styles */
+
+  .error-sentence{
+
+    font-size:15px;font-weight:500;padding:10px 14px;
+
+    background:#fff0f0;border:1px solid #f5b8b8;border-radius:8px;
+
+    margin-bottom:10px;line-height:1.7;
+
+  }
+
+  .error-sentence .underlined{
+
+    text-decoration:underline;text-decoration-color:#EF0107;
+
+    text-decoration-thickness:2px;font-weight:700;color:#9B0000;
+
+  }
+
+
+
+  /* Matching Grid Layout */
+
+  .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;margin-top:8px}
+
+  @media (max-width:600px){.match-grid{grid-template-columns:1fr}}
+
+  .match-row{display:flex;gap:8px;align-items:center;padding:8px;background:#fde8e8;
+
+    border-radius:8px;font-size:14px}
+
+  .match-row select{flex-shrink:0;width:80px;padding:6px;border-radius:6px;
+
+    border:1px solid var(--line);font-family:inherit;background:#fff}
+
+  .defs{margin-top:14px;padding:14px;background:#fff8f8;border:1px solid #f0d0d0;border-radius:10px;font-size:13px}
+
+  .defs strong{color:var(--green-dk)}
+
+
+
+  footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}
+
+  footer .reset-all{color:var(--red);cursor:pointer;text-decoration:underline}
+
+  /* Rondos */
+  .rondos-bar{display:flex;justify-content:center;margin:18px 0 0}
+  .rondos-btn{padding:10px 32px;border-radius:30px;border:2px solid var(--gold);
+    font-size:14px;font-weight:700;cursor:pointer;background:#fff8e1;color:#7a5a00;
+    font-family:inherit;transition:all .18s;letter-spacing:.03em}
+  .rondos-btn:hover{background:#fff3c4}
+  .rondos-modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);
+    z-index:200;align-items:center;justify-content:center}
+  .rondos-modal-bg.open{display:flex}
+  .rondos-modal{background:#fff;border-radius:18px;max-width:640px;width:94%;
+    max-height:90vh;overflow-y:auto;padding:28px;position:relative;
+    box-shadow:0 8px 40px rgba(0,0,0,.22)}
+  .rondos-modal h2{margin:0 0 4px;color:var(--green-dk);font-size:22px}
+  .rondos-modal .lead{color:var(--muted);font-size:13px;margin:0 0 18px}
+  .rondos-close{position:absolute;top:14px;right:16px;background:none;border:none;
+    font-size:22px;cursor:pointer;color:var(--muted);line-height:1}
+  .rondos-close:hover{color:var(--ink)}
+  .rondo-pair{display:flex;align-items:center;gap:10px;padding:10px 0;
+    border-top:1px solid var(--line)}
+  .rondo-pair:first-of-type{border-top:none}
+  .rondo-es{min-width:180px;font-weight:600;color:var(--green-dk);font-size:15px}
+  .rondo-select{flex:1;padding:8px 10px;border-radius:8px;border:1px solid var(--line);
+    font-family:inherit;font-size:14px;background:#fff}
+  .rondo-select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(239,1,7,.12)}
+  .rondos-toolbar{display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+  .rondos-score{margin-left:auto;background:#fde8e8;color:var(--green-dk);
+    padding:6px 12px;border-radius:20px;font-weight:600;font-size:13px}
+  .rondos-badge{display:inline-block;background:var(--gold);color:#fff;
+    border-radius:12px;padding:2px 9px;font-size:11px;font-weight:700;margin-left:8px;
+    vertical-align:middle}
+
+
+/* ===== CLASS 3 — -ed Ending Pronunciation Activity ===== */
+#c3 .ed-intro{background:#fff8f8;border:1px solid #e8d5d5;border-radius:12px;padding:16px;margin-bottom:14px;}
+#c3 .pron-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:6px 0 14px;}
+#c3 .pron-card{border-radius:10px;padding:14px;text-align:center;}
+#c3 .pron-card.tc{background:#d4edda;border:2px solid #6b8f71;color:#155724;}
+#c3 .pron-card.dc{background:#cce5ff;border:2px solid #5c7f91;color:#004085;}
+#c3 .pron-card.ic{background:#fff3cd;border:2px solid #c68a4c;color:#856404;}
+#c3 .pron-sym{font-size:28px;font-weight:800;display:block;margin-bottom:6px;}
+#c3 .pron-txt{font-size:13px;line-height:1.5;margin-bottom:10px;}
+#c3 .spk{background:transparent;border:none;font-size:16px;cursor:pointer;padding:4px 8px;border-radius:6px;display:block;margin:4px auto;font-family:inherit;}
+#c3 .spk:hover{background:rgba(0,0,0,.08);}
+#c3 .howto{color:#475569;font-size:14px;background:#fef3c7;padding:10px 14px;border-radius:6px;border-left:4px solid #c68a4c;margin:8px 0 16px;}
+#c3 .r-nav{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
+#c3 .r-tab{background:#fff;border:1.5px solid #EF0107;color:#9B0000;padding:9px 20px;border-radius:24px;cursor:pointer;font-size:14px;font-weight:700;font-family:inherit;transition:all .15s;}
+#c3 .r-tab:hover{background:#fde8e8;}
+#c3 .r-tab.active{background:#EF0107;color:#fff;}
+#c3 .r-panel{display:none;}
+#c3 .r-panel.active{display:block;}
+#c3 .round-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;}
+#c3 .round-hdr h3{margin:0;font-size:18px;color:#9B0000;}
+#c3 .word-bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;padding:14px;background:#fde8e8;border-radius:10px;}
+#c3 .chip-wrap{display:flex;align-items:center;gap:4px;}
+#c3 .chip{background:#fff;border:1.5px solid #94a3b8;border-radius:20px;padding:8px 14px;font-size:15px;font-weight:600;cursor:pointer;color:#334155;user-select:none;transition:background .15s,outline .1s;}
+#c3 .chip:hover{background:#e2e8f0;}
+#c3 .chip.sel{outline:2.5px solid #EF0107;outline-offset:2px;}
+#c3 .chip.placed{opacity:.28;pointer-events:none;}
+#c3 .sort-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;}
+#c3 .scol{border-radius:10px;padding:12px;min-height:100px;cursor:pointer;}
+#c3 .scol.tc{background:#f4fff7;border:2px solid #6b8f71;}
+#c3 .scol.dc{background:#f0f7ff;border:2px solid #5c7f91;}
+#c3 .scol.ic{background:#fffdf0;border:2px solid #c68a4c;}
+#c3 .col-lbl{font-size:22px;font-weight:800;text-align:center;margin-bottom:8px;}
+#c3 .scol.tc .col-lbl{color:#155724;}
+#c3 .scol.dc .col-lbl{color:#004085;}
+#c3 .scol.ic .col-lbl{color:#856404;}
+#c3 .drop-zone{min-height:60px;display:flex;flex-direction:column;gap:6px;}
+#c3 .dchip{background:#fff;border-radius:16px;padding:6px 12px;font-size:14px;font-weight:600;cursor:pointer;border:1px solid #e2e8f0;width:fit-content;transition:opacity .15s;}
+#c3 .dchip:hover{opacity:.6;}
+#c3 .sfb{margin-top:12px;font-size:15px;padding:12px 16px;border-radius:8px;display:none;}
+#c3 .sfb.ok{background:#d4edda;color:#155724;border-left:4px solid #6b8f71;}
+#c3 .sfb.part{background:#fff3cd;color:#856404;border-left:4px solid #c68a4c;}
+#c3 .ed-key{display:none;margin-top:14px;padding:16px;background:#fff8f8;border-left:5px solid #EF0107;border-radius:8px;font-size:14px;line-height:1.9;color:#334155;}
+@media(max-width:600px){#c3 .sort-cols,#c3 .pron-grid,#c3 .r-nav{grid-template-columns:1fr;flex-direction:column;}}
+
+/* ===== Session 3 sub-tabs + rehab activities ===== */
+#c3 .s3-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+#c3 .s3-tab{background:#fff;border:1.5px solid #EF0107;color:#9B0000;padding:10px 18px;border-radius:24px;cursor:pointer;font-size:14px;font-weight:700;font-family:inherit;transition:all .15s;}
+#c3 .s3-tab:hover{background:#fde8e8;}
+#c3 .s3-tab.active{background:#EF0107;color:#fff;box-shadow:0 2px 8px rgba(239,1,7,.3);}
+#c3 .s3-panel{display:none;}
+#c3 .s3-panel.active{display:block;}
+#c3 .qrow{padding:12px 0;border-bottom:1px solid #f0e0e0;display:flex;flex-direction:column;gap:8px;}
+#c3 .qrow:last-of-type{border-bottom:none;}
+#c3 .qpv{font-weight:700;color:#1a1a1a;font-size:16px;}
+#c3 .qsent{margin:0;color:#334155;font-size:15px;line-height:1.5;}
+#c3 .qsel{padding:9px;border-radius:6px;border:1px solid #cbd5e1;width:100%;background:#fff;font-size:15px;font-family:inherit;transition:background .2s,border-color .2s;}
+</style>
+
+</head>
+
+<body>
+
+
+
+<header>
+
+  <h1>⚽ Eneco's English Practice</h1>
+
+  <p>Present perfect · Football injuries · Babies · Stadium parts · Prepositions</p>
+
+  <div class="class-switcher">
+
+    <button class="class-btn active" onclick="switchClass('c1',this)">Session 1</button>
+
+    <button class="class-btn" onclick="switchClass('c2',this)">Session 2</button>
+
+    <button class="class-btn" onclick="switchClass('c3',this)">Session 3</button>
+
+  </div>
+
+  <div class="rondos-bar">
+    <button class="rondos-btn" onclick="openRondos()">🔄 Rondos <span class="rondos-badge">vocab game</span></button>
+  </div>
+
+</header>
+
+<div class="rondos-modal-bg" id="rondos-modal-bg" onclick="closeRondosOnBg(event)">
+  <div class="rondos-modal">
+    <button class="rondos-close" onclick="closeRondos()" title="Close">✕</button>
+    <h2>🔄 Rondos</h2>
+    <p class="lead">Match the Spanish word or phrase to its English equivalent. A new random set every time!</p>
+    <div class="rondos-toolbar">
+      <button class="btn small" onclick="checkRondos()">Check</button>
+      <button class="btn warn small" onclick="buildRondos()">🔀 New round</button>
+      <span class="rondos-score" id="rondos-score">0 / 10</span>
+    </div>
+    <div id="rondos-pairs"></div>
+  </div>
+</div>
+
+
+
+<div class="container">
+
+
+
+<div class="class-panel active" id="c1">
+
+  <div class="tabs" id="tabs-c1">
+
+    <button class="tab active" data-tab="p1">1. Translations</button>
+
+    <button class="tab" data-tab="p2">2. Injuries</button>
+
+    <button class="tab" data-tab="p3">3. Baby Words</button>
+
+    <button class="tab" data-tab="p4">4. The Stadium</button>
+
+    <button class="tab" data-tab="p5">5. Prepositions</button>
+
+  </div>
+
+
+
+  <div class="panel active" id="p1">
+
+    <div class="card">
+
+      <h2>Part 1 — Present Perfect Simple</h2>
+
+      <p class="lead">Translate each Spanish sentence into English. Watch the keywords: <em>since, already, yet, ever, just</em>.</p>
+
+      <div class="toolbar">
+
+        <button class="btn small" onclick="checkAll('p1')">Check all</button>
+
+        <button class="btn ghost small" onclick="resetSection('p1')">↻ Reset</button>
+
+        <button class="btn warn small" onclick="shuffleSection('p1')">🔀 Shuffle</button>
+
+        <span class="score" id="score-p1">0 / 9</span>
+
+      </div>
+
+      <div id="p1-questions"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="panel" id="p2">
+
+    <div class="card">
+
+      <h2>Part 2 — Common Football Injuries</h2>
+
+      <p class="lead">Match each injury (1–10) with its correct definition (A–J).</p>
+
+      <div class="toolbar">
+
+        <button class="btn small" onclick="checkMatch('p2')">Check</button>
+
+        <button class="btn ghost small" onclick="resetSection('p2')">↻ Reset</button>
+
+        <button class="btn warn small" onclick="shuffleMatchDefs('p2')">🔀 Shuffle defs</button>
+
+        <span class="score" id="score-p2">0 / 10</span>
+
+      </div>
+
+      <div id="p2-terms" class="match-grid"></div>
+
+      <div class="defs" id="p2-defs"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="panel" id="p3">
+
+    <div class="card">
+
+      <h2>Part 3 — Baby & Infant Vocabulary</h2>
+
+      <p class="lead">Choose the right word from: <strong>nappy · pushchair · toddler · wean · dummy</strong>.</p>
+
+      <div class="toolbar">
+
+        <button class="btn small" onclick="checkAll('p3')">Check all</button>
+
+        <button class="btn ghost small" onclick="resetSection('p3')">↻ Reset</button>
+
+        <button class="btn warn small" onclick="shuffleSection('p3')">🔀 Shuffle</button>
+
+        <span class="score" id="score-p3">0 / 5</span>
+
+      </div>
+
+      <div id="p3-questions"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="panel" id="p4">
+
+    <div class="card">
+
+      <h2>Part 4 — Parts of a Football Ground</h2>
+
+      <p class="lead">Match each stadium term with its correct definition.</p>
+
+      <div class="toolbar">
+
+        <button class="btn small" onclick="checkMatch('p4')">Check</button>
+
+        <button class="btn ghost small" onclick="resetSection('p4')">↻ Reset</button>
+
+        <button class="btn warn small" onclick="shuffleMatchDefs('p4')">🔀 Shuffle defs</button>
+
+        <span class="score" id="score-p4">0 / 10</span>
+
+      </div>
+
+      <div id="p4-terms" class="match-grid"></div>
+
+      <div class="defs" id="p4-defs"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="panel" id="p5">
+
+    <div class="card">
+
+      <h2>Part 5 — Prepositions of Time</h2>
+
+      <p class="lead">
+
+        <strong>at</strong> – clock times, mealtimes, holidays · <strong>on</strong> – days &amp; dates ·
+
+        <strong>in</strong> – months, years, seasons, parts of the day.
+
+      </p>
+
+      <div class="toolbar">
+
+        <button class="btn small" onclick="checkAll('p5')">Check all</button>
+
+        <button class="btn ghost small" onclick="resetSection('p5')">↻ Reset</button>
+
+        <button class="btn warn small" onclick="shuffleSection('p5')">🔀 Shuffle</button>
+
+        <span class="score" id="score-p5">0 / 10</span>
+
+      </div>
+
+      <div id="p5-questions"></div>
+
+    </div>
+
+  </div>
+
+</div><div class="class-panel" id="c2">
+
+  <div class="tabs" id="tabs-c2">
+
+    <button class="tab active" data-tab="p6">1. Error Correction</button>
+
+    <button class="tab" data-tab="p7">2. Physio Vocab</button>
+
+    <button class="tab" data-tab="p8">3. Baby Shopping</button>
+
+    <button class="tab" data-tab="p9">4. Stadium People</button>
+
+    <button class="tab" data-tab="p10">5. Prepositions</button>
+
+  </div>
+
+
+
+  <div class="panel active" id="p6">
+
+    <div class="card">
+
+      <h2>Part 1 — Present Perfect: Find &amp; Fix the Error</h2>
+
+      <p class="lead">Each sentence contains one mistake that a Spanish speaker often makes. The error is <span style="color:#9B0000;font-weight:700;text-decoration:underline">underlined</span>. Type the corrected sentence.</p>
+
+      <div class="toolbar">
+
+        <button class="btn small" onclick="checkAll('p6')">Check all</button>
+
+        <button class="btn ghost small" onclick="resetSection('p6')">↻ Reset</button>
+
+        <button class="btn warn small" onclick="shuffleSection('p6')">🔀 Shuffle</button>
+
+        <span class="score" id="score-p6">0 / 9</span>
+
+      </div>
+
+      <div id="p6-questions"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="panel" id="p7">
+
+    <div class="card">
+
+      <h2>Part 2 — Physiotherapy Vocabulary</h2>
+
+      <p class="lead">Match each term (1–10) with its correct definition (A–J).</p>
+
+      <div class="toolbar">
+
+        <button class="btn small" onclick="checkMatch('p7')">Check</button>
+
+        <button class="btn ghost small" onclick="resetSection('p7')">↻ Reset</button>
+
+        <button class="btn warn small" onclick="shuffleMatchDefs('p7')">🔀 Shuffle defs</button>
+
+        <span class="score" id="score-p7">0 / 10</span>
+
+      </div>
+
+      <div id="p7-terms" class="match-grid"></div>
+
+      <div class="defs" id="p7-defs"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="panel" id="p8">
+
+    <div class="card">
+
+      <h2>Part 3 — Baby Shopping at Boots</h2>
+
+      <p class="lead">Fill the gap with the correct word from: <strong>breast pump · muslin · babygrow · nappy cream · thermometer · cotton wool · steriliser · baby wipes · swaddle · formula</strong>.</p>
+
+      <div class="toolbar">
+
+        <button class="btn small" onclick="checkAll('p8')">Check all</button>
+
+        <button class="btn ghost small" onclick="resetSection('p8')">↻ Reset</button>
+
+        <button class="btn warn small" onclick="shuffleSection('p8')">🔀 Shuffle</button>
+
+        <span class="score" id="score-p8">0 / 8</span>
+
+      </div>
+
+      <div id="p8-questions"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="panel" id="p9">
+
+    <div class="card">
+
+      <h2>Part 4 — People at a Football Ground</h2>
+
+      <p class="lead">Match each person (1–10) with their correct description (A–J).</p>
+
+      <div class="toolbar">
+
+        <button class="btn small" onclick="checkMatch('p9')">Check</button>
+
+        <button class="btn ghost small" onclick="resetSection('p9')">↻ Reset</button>
+
+        <button class="btn warn small" onclick="shuffleMatchDefs('p9')">🔀 Shuffle defs</button>
+
+        <span class="score" id="score-p9">0 / 10</span>
+
+      </div>
+
+      <div id="p9-terms" class="match-grid"></div>
+
+      <div class="defs" id="p9-defs"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="panel" id="p10">
+
+    <div class="card">
+
+      <h2>Part 5 — Prepositions of Time: <em>at / in / for / since</em></h2>
+
+      <p class="lead">
+
+        <strong>for</strong> – a duration of time · <strong>since</strong> – a starting point in the past ·
+
+        <strong>at</strong> – a precise moment · <strong>in</strong> – parts of the day, months, seasons.
+
+      </p>
+
+      <div class="toolbar">
+
+        <button class="btn small" onclick="checkAll('p10')">Check all</button>
+
+        <button class="btn ghost small" onclick="resetSection('p10')">↻ Reset</button>
+
+        <button class="btn warn small" onclick="shuffleSection('p10')">🔀 Shuffle</button>
+
+        <span class="score" id="score-p10">0 / 10</span>
+
+      </div>
+
+      <div id="p10-questions"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="class-panel" id="c3">
+
+  <div class="s3-nav">
+    <button class="s3-tab active" onclick="showS3('s3a',this)">&#x1F50A; -ed Endings</button>
+    <button class="s3-tab" onclick="showS3('s3b',this)">Rehab Phrasal Verbs</button>
+    <button class="s3-tab" onclick="showS3('s3c',this)">The Player Rehab Log</button>
+  </div>
+
+  <div id="s3a" class="s3-panel active">
+
+  <div class="card">
+    <h2 style="color:#9B0000;margin:0 0 6px;">&#x1F50A; The -ed Ending &mdash; Three Pronunciations</h2>
+    <p class="lead">Regular past simple verbs end in -ed, but the pronunciation depends on the final sound of the base verb. Sort each verb into the correct column.</p>
+
+    <div class="ed-intro">
+      <div class="pron-grid">
+        <div class="pron-card tc">
+          <span class="pron-sym">/t/</span>
+          <div class="pron-txt">After <strong>voiceless</strong> consonants:<br>p, k, f, s, sh, ch, th</div>
+          <div class="pron-txt" style="font-style:italic;">Imagine you are imitating a train for Eneko Jr!</div>
+          <button class="spk" onclick="edSpeak('walked',event)">&#x1F50A; walked</button>
+          <button class="spk" onclick="edSpeak('missed',event)">&#x1F50A; missed</button>
+        </div>
+        <div class="pron-card dc">
+          <span class="pron-sym">/d/</span>
+          <div class="pron-txt">After <strong>voiced</strong> consonants &amp; vowels:<br>b, g, v, z, m, n, l, r + vowels</div>
+          <button class="spk" onclick="edSpeak('called',event)">&#x1F50A; called</button>
+          <button class="spk" onclick="edSpeak('played',event)">&#x1F50A; played</button>
+        </div>
+        <div class="pron-card ic">
+          <span class="pron-sym">/&#x026A;d/</span>
+          <div class="pron-txt">After base verbs ending in <strong>/t/ or /d/</strong></div>
+          <button class="spk" onclick="edSpeak('wanted',event)">&#x1F50A; wanted</button>
+          <button class="spk" onclick="edSpeak('needed',event)">&#x1F50A; needed</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="howto"><strong>How to use:</strong> Click a verb to select it, then click a column to drop it &mdash; or drag it directly. Click &#x1F50A; to hear pronunciation. Click a placed verb to return it to the word bank.</p>
+
+    <div class="r-nav">
+      <button id="ed-rbtn1" class="r-tab active" onclick="edShowRound(1)">Round 1</button>
+      <button id="ed-rbtn2" class="r-tab" onclick="edShowRound(2)">Round 2</button>
+      <button id="ed-rbtn3" class="r-tab" onclick="edShowRound(3)">Round 3</button>
+    </div>
+
+    <div id="ed-round1" class="r-panel active">
+      <div class="round-hdr"><h3>Round 1 &mdash; 10 verbs</h3><button class="btn ghost small" onclick="edResetRound(1)">&#x21BB; Reset</button></div>
+      <div class="word-bank" id="ed-bank1"></div>
+      <div class="sort-cols">
+        <div class="scol tc" onclick="edDropChip(event,'t',1)"><div class="col-lbl">/t/</div><div class="drop-zone" id="ed-z1t"></div></div>
+        <div class="scol dc" onclick="edDropChip(event,'d',1)"><div class="col-lbl">/d/</div><div class="drop-zone" id="ed-z1d"></div></div>
+        <div class="scol ic" onclick="edDropChip(event,'id',1)"><div class="col-lbl">/&#x026A;d/</div><div class="drop-zone" id="ed-z1id"></div></div>
+      </div>
+      <div class="toolbar"><button class="btn small" onclick="edCheckRound(1)">Check</button><button class="btn ghost small" onclick="edToggleKey('ed-key1')">See Answers</button></div>
+      <div id="ed-sfb1" class="sfb"></div>
+      <div id="ed-key1" class="ed-key"><strong>/t/</strong> &rarr; walked (walk&rarr;/k/), missed (miss&rarr;/s/), helped (help&rarr;/p/)<br><strong>/d/</strong> &rarr; called (call&rarr;/l/), played (play&rarr;vowel), listened (listen&rarr;/n/), arrived (arrive&rarr;/v/)<br><strong>/&#x026A;d/</strong> &rarr; wanted (want&rarr;/t/), started (start&rarr;/t/), needed (need&rarr;/d/)</div>
+    </div>
+    <div id="ed-round2" class="r-panel">
+      <div class="round-hdr"><h3>Round 2 &mdash; 10 verbs</h3><button class="btn ghost small" onclick="edResetRound(2)">&#x21BB; Reset</button></div>
+      <div class="word-bank" id="ed-bank2"></div>
+      <div class="sort-cols">
+        <div class="scol tc" onclick="edDropChip(event,'t',2)"><div class="col-lbl">/t/</div><div class="drop-zone" id="ed-z2t"></div></div>
+        <div class="scol dc" onclick="edDropChip(event,'d',2)"><div class="col-lbl">/d/</div><div class="drop-zone" id="ed-z2d"></div></div>
+        <div class="scol ic" onclick="edDropChip(event,'id',2)"><div class="col-lbl">/&#x026A;d/</div><div class="drop-zone" id="ed-z2id"></div></div>
+      </div>
+      <div class="toolbar"><button class="btn small" onclick="edCheckRound(2)">Check</button><button class="btn ghost small" onclick="edToggleKey('ed-key2')">See Answers</button></div>
+      <div id="ed-sfb2" class="sfb"></div>
+      <div id="ed-key2" class="ed-key"><strong>/t/</strong> &rarr; worked (work&rarr;/k/), talked (talk&rarr;/k/), passed (pass&rarr;/s/), laughed (laugh&rarr;/f/)<br><strong>/d/</strong> &rarr; moved (move&rarr;/v/), planned (plan&rarr;/n/), used (use&rarr;/z/), followed (follow&rarr;vowel)<br><strong>/&#x026A;d/</strong> &rarr; decided (decide&rarr;/d/), waited (wait&rarr;/t/)</div>
+    </div>
+    <div id="ed-round3" class="r-panel">
+      <div class="round-hdr"><h3>Round 3 &mdash; 10 verbs</h3><button class="btn ghost small" onclick="edResetRound(3)">&#x21BB; Reset</button></div>
+      <div class="word-bank" id="ed-bank3"></div>
+      <div class="sort-cols">
+        <div class="scol tc" onclick="edDropChip(event,'t',3)"><div class="col-lbl">/t/</div><div class="drop-zone" id="ed-z3t"></div></div>
+        <div class="scol dc" onclick="edDropChip(event,'d',3)"><div class="col-lbl">/d/</div><div class="drop-zone" id="ed-z3d"></div></div>
+        <div class="scol ic" onclick="edDropChip(event,'id',3)"><div class="col-lbl">/&#x026A;d/</div><div class="drop-zone" id="ed-z3id"></div></div>
+      </div>
+      <div class="toolbar"><button class="btn small" onclick="edCheckRound(3)">Check</button><button class="btn ghost small" onclick="edToggleKey('ed-key3')">See Answers</button></div>
+      <div id="ed-sfb3" class="sfb"></div>
+      <div id="ed-key3" class="ed-key"><strong>/t/</strong> &rarr; watched (watch&rarr;/t&#x283;/), rushed (rush&rarr;/&#x283;/), dropped (drop&rarr;/p/)<br><strong>/d/</strong> &rarr; managed (manage&rarr;/d&#x292;/), showed (show&rarr;vowel), realised (realise&rarr;/z/), served (serve&rarr;/v/)<br><strong>/&#x026A;d/</strong> &rarr; ended (end&rarr;/d/), invited (invite&rarr;/t/), recommended (recommend&rarr;/d/)</div>
+    </div>
+  </div>
+
+  </div>
+
+  <div id="s3b" class="s3-panel">
+    <div class="card">
+      <h2 style="color:#9B0000;margin:0 0 6px;">&#x26BD; Rehab Phrasal Verbs</h2>
+      <p class="lead">Choose the best definition for the phrasal verb as used in professional sports physiotherapy.</p>
+      <div class="qrow"><div class="qpv">Check in</div><select class="qsel" id="rv1"><option value="">-- Choose --</option><option value="a">To analyze complex data</option><option value="b">To monitor a player&#x27;s progress regularly</option><option value="c">To finish a training session</option></select></div>
+      <div class="qrow"><div class="qpv">Build up</div><select class="qsel" id="rv2"><option value="">-- Choose --</option><option value="a">To gradually increase fitness or intensity</option><option value="b">To remove equipment from the pitch</option><option value="c">To stop training completely</option></select></div>
+      <div class="qrow"><div class="qpv">Burn out</div><select class="qsel" id="rv3"><option value="">-- Choose --</option><option value="a">To improve speed</option><option value="b">To become exhausted from overtraining</option><option value="c">To cool down after a match</option></select></div>
+      <div class="qrow"><div class="qpv">Cut back</div><select class="qsel" id="rv4"><option value="">-- Choose --</option><option value="a">To increase training volume</option><option value="b">To reduce training intensity during recovery</option><option value="c">To record player performance</option></select></div>
+      <div class="qrow"><div class="qpv">Carry out</div><select class="qsel" id="rv5"><option value="">-- Choose --</option><option value="a">To perform a medical test or assessment</option><option value="b">To carry a player off the pitch</option><option value="c">To watch a match from the sidelines</option></select></div>
+      <div class="qrow"><div class="qpv">Rule out</div><select class="qsel" id="rv6"><option value="">-- Choose --</option><option value="a">To allow a player to start a match</option><option value="b">To exclude a player from playing (e.g., due to injury)</option><option value="c">To diagnose a muscle strain</option></select></div>
+      <div class="qrow"><div class="qpv">Pull out</div><select class="qsel" id="rv7"><option value="">-- Choose --</option><option value="a">To withdraw a player from a match or squad</option><option value="b">To push a player to work harder</option><option value="c">To join a new training group</option></select></div>
+      <div class="qrow"><div class="qpv">Draw up</div><select class="qsel" id="rv8"><option value="">-- Choose --</option><option value="a">To erase a training plan</option><option value="b">To create a training or recovery plan</option><option value="c">To run quickly across the pitch</option></select></div>
+      <div class="qrow"><div class="qpv">Break down</div><select class="qsel" id="rv9"><option value="">-- Choose --</option><option value="a">To analyze movement or data in detail</option><option value="b">To suffer a sudden injury</option><option value="c">To ignore medical advice</option></select></div>
+      <div class="qrow"><div class="qpv">Drop off</div><select class="qsel" id="rv10"><option value="">-- Choose --</option><option value="a">To reach peak physical fitness</option><option value="b">To experience a decline in performance or fitness</option><option value="c">To start a new exercise routine</option></select></div>
+      <div class="toolbar" style="margin-top:14px;">
+        <button class="btn small" onclick="rvCheck()">Check your answers</button>
+        <button class="btn ghost small" onclick="rvToggle()">See Answers</button>
+        <button class="btn warn small" onclick="rvTryAgain()">&#x1F500; Try again</button>
+      </div>
+      <div id="rv-sfb" class="sfb"></div>
+      <div id="rv-key" class="ed-key"></div>
+    </div>
+  </div>
+
+  <div id="s3c" class="s3-panel">
+    <div class="card">
+      <h2 style="color:#9B0000;margin:0 0 6px;">&#x1F4CB; The Player Rehab Log</h2>
+      <p class="lead">Select the correct phrasal verbs to complete the physio's notes.</p>
+      <div class="qrow log"><p class="qsent"><strong>Bukayo Saka:</strong> "We need to _______ a recovery plan to _______ his strength before the next international break."</p><select class="qsel" id="rl1"><option value="">-- Choose --</option><option value="a">set up / cool down</option><option value="b">draw up / build up</option><option value="c">break down / cut back</option></select></div>
+      <div class="qrow log"><p class="qsent"><strong>Martin Ødegaard:</strong> "He is feeling fatigue; we need to _______ his training volume and _______ with him every morning."</p><select class="qsel" id="rl2"><option value="">-- Choose --</option><option value="a">cut back / check in</option><option value="b">rule out / pull out</option><option value="c">push through / keep up</option></select></div>
+      <div class="qrow log"><p class="qsent"><strong>Ben White:</strong> "After we _______ the final scan, we will likely _______ his participation for the upcoming final."</p><select class="qsel" id="rl3"><option value="">-- Choose --</option><option value="a">build up / draw up</option><option value="b">carry out / rule out</option><option value="c">burn out / drop off</option></select></div>
+      <div class="qrow log"><p class="qsent"><strong>Kai Havertz:</strong> "He is recovering from his injury; we will _______ his match minutes gradually to _______ his fitness."</p><select class="qsel" id="rl4"><option value="">-- Choose --</option><option value="a">build up / build up</option><option value="b">set up / break down</option><option value="c">drop off / pull out</option></select></div>
+      <div class="qrow log"><p class="qsent"><strong>Gabriel Magalhães:</strong> "We must _______ his intensity to avoid him _______ before the league title decider."</p><select class="qsel" id="rl5"><option value="">-- Choose --</option><option value="a">check in / keeping up</option><option value="b">cut back / burning out</option><option value="c">break down / drawing up</option></select></div>
+      <div class="qrow log"><p class="qsent"><strong>Julián Álvarez:</strong> "His scouts report no _______ in his scoring rate, but they continue to _______ his movement data."</p><select class="qsel" id="rl6"><option value="">-- Choose --</option><option value="a">pull out / push through</option><option value="b">drop off / break down</option><option value="c">carry out / keep up</option></select></div>
+      <div class="qrow log"><p class="qsent"><strong>Declan Rice:</strong> "His stats show a slight _______; we need to _______ his recent movement patterns."</p><select class="qsel" id="rl7"><option value="">-- Choose --</option><option value="a">drop off / break down</option><option value="b">rule out / break down</option><option value="c">cut back / check in</option></select></div>
+      <div class="qrow log"><p class="qsent"><strong>Mikel Merino:</strong> "Please _______ the sensor equipment before the players _______ to track their recovery."</p><select class="qsel" id="rl8"><option value="">-- Choose --</option><option value="a">break down / build up</option><option value="b">set up / cool down</option><option value="c">check in / cut back</option></select></div>
+      <div class="toolbar" style="margin-top:14px;">
+        <button class="btn small" onclick="logCheck()">Check your answers</button>
+        <button class="btn ghost small" onclick="logToggle()">See Answers</button>
+        <button class="btn warn small" onclick="logTryAgain()">&#x1F500; Try again</button>
+      </div>
+      <div id="rl-sfb" class="sfb"></div>
+      <div id="rl-key" class="ed-key"></div>
+    </div>
+  </div>
+
+</div>
+</div><footer>
+
+  Progress is saved on this device. <span class="reset-all" onclick="resetAll()">Clear everything</span>
+
+</footer>
+
+
+
+<script>
+
+/* =========================  DATA — CLASS 1  ========================= */
+
+const data = {
+
+  p1: [
+
+    { es:"He vivido en esta ciudad desde que tenía diez años.",
+
+      answers:["i have lived in this city since i was ten years old",
+
+               "i have lived in this city since i was ten",
+
+               "i've lived in this city since i was ten years old",
+
+               "i've lived in this city since i was ten"],
+
+      hint:"Use <strong>since</strong> + age (I was ten…)",
+
+      model:"I have lived in this city since I was ten years old." },
+
+    { es:"¿Has terminado ya de leer el informe del paciente?",
+
+      answers:["have you finished reading the patient's report yet",
+
+               "have you already finished reading the patient's report",
+
+               "have you finished reading the patients report yet",
+
+               "have you already finished reading the patients report"],
+
+      hint:"In questions, <em>ya</em> can be translated as <strong>yet</strong> (end) or <strong>already</strong> (middle).",
+
+      model:"Have you finished reading the patient's report yet?" },
+
+    { es:"Todavía no hemos recibido los resultados de las pruebas.",
+
+      answers:["we haven't received the test results yet",
+
+               "we have not received the test results yet",
+
+               "we haven't got the test results yet"],
+
+      hint:"<em>Todavía no</em> in negatives = <strong>haven't … yet</strong>.",
+
+      model:"We haven't received the test results yet." },
+
+    { es:"El médico del club ha evaluado la lesión del jugador esta tarde.",
+
+      answers:["the club doctor has assessed the player's injury this afternoon",
+
+               "the club doctor has evaluated the player's injury this afternoon",
+
+               "the club's doctor has assessed the player's injury this afternoon",
+
+               "the club's doctor has evaluated the player's injury this afternoon"],
+
+      hint:"Use <strong>has + past participle</strong> — <em>this afternoon</em> isn't finished yet.",
+
+      model:"The club doctor has assessed the player's injury this afternoon." },
+
+    { es:"¿Alguna vez has estado en un partido en directo en el Emirates Stadium?",
+
+      answers:["have you ever been to a live match at the emirates stadium",
+
+               "have you ever been to a live game at the emirates stadium"],
+
+      hint:"<em>Alguna vez</em> = <strong>ever</strong>. Goes between subject and main verb.",
+
+      model:"Have you ever been to a live match at the Emirates Stadium?" },
+
+    { es:"Ella ya ha asistido a tres seminarios sobre rehabilitación este año.",
+
+      answers:["she has already edited three seminars on rehabilitation this year",
+
+               "she has already attended three rehabilitation seminars this year",
+
+               "she's already attended three rehabilitation seminars this year",
+
+               "she's already attended three seminars on rehabilitation this year"],
+
+      hint:"<em>Ya</em> in positives = <strong>already</strong> (between <em>has</em> and the verb).",
+
+      model:"She has already attended three rehabilitation seminars this year." },
+
+    { es:"El árbitro ya ha mostrado tres tarjetas amarillas hoy.",
+
+      answers:["the referee has already shown three yellow cards today",
+
+               "the ref has already shown three yellow cards today"],
+
+      hint:"<em>Show</em> → past participle is <strong>shown</strong>.",
+
+      model:"The referee has already shown three yellow cards today." },
+
+    { es:"El entrenador acaba de anunciar la alineación titular.",
+
+      answers:["the coach has just announced the starting lineup",
+
+               "the manager has just announced the starting lineup",
+
+               "the coach has just announced the starting line-up",
+
+               "the manager has just announced the starting line-up",
+
+               "the coach has just announced the starting eleven"],
+
+      hint:"<em>Acabar de</em> = <strong>have just</strong> + past participle.",
+
+      model:"The manager has just announced the starting lineup." },
+
+    { es:"¿Cuántos goles ha marcado ese delantero esta temporada?",
+
+      answers:["how many goals has that forward scored this season",
+
+               "how many goals has that striker scored this season"],
+
+      hint:"<em>Delantero</em> = <strong>forward / striker</strong>. <em>Marcar</em> = <strong>score</strong>.",
+
+      model:"How many goals has that striker scored this season?" },
+
+  ],
+
+  p2: {
+
+    terms: [
+
+      {id:1, t:"Hamstring strain", a:"F"},
+
+      {id:2, t:"ACL tear",          a:"G"},
+
+      {id:3, t:"Concussion",        a:"E"},
+
+      {id:4, t:"Fracture",          a:"A"},
+
+      {id:5, t:"Ankle sprain",      a:"C"},
+
+      {id:6, t:"Groin strain",      a:"I"},
+
+      {id:7, t:"Tendinitis",        a:"D"},
+
+      {id:8, t:"Shin splints",      a:"B"},
+
+      {id:9, t:"Dislocation",       a:"H"},
+
+      {id:10,t:"Contusion",         a:"J"},
+
+    ],
+
+    defs: [
+
+      {k:"A", d:"A complete or partial break in a bone, often caused by a heavy tackle or an awkward fall."},
+
+      {k:"B", d:"Pain and inflammation along the shin bone (tibia), common in players who train on hard surfaces."},
+
+      {k:"C", d:"An injury to the ligaments on the outside of the ankle, typically caused by rolling or twisting the foot inward."},
+
+      {k:"D", d:"Inflammation of a tendon caused by overuse or repetitive movement — the Achilles is most commonly affected in footballers."},
+
+      {k:"E", d:"A temporary disruption of normal brain function caused by a blow or jolt to the head, requiring immediate medical assessment."},
+
+      {k:"F", d:"A tear or overstretch of the muscles at the back of the upper leg — one of the most frequent injuries in the sport."},
+
+      {k:"G", d:"A rupture of the main stabilising ligament inside the knee joint, often occurring during sudden changes of direction."},
+
+      {k:"H", d:"When the bones of a joint are forced out of their normal position, most commonly affecting the shoulder or fingers."},
+
+      {k:"I", d:"A pull or tear of the muscles in the inner thigh area, typically caused by sudden sideways or lunging movements."},
+
+      {k:"J", d:"A bruise — bleeding under the skin from a direct blow, common after collisions or heavy tackles."},
+
+    ]
+
+  },
+
+  p3: [
+
+    { sentence:"Before the trip, Eneco and his wife decided it was finally the right time to ____ the baby off breast milk and start introducing solid foods.",
+
+      answers:["wean"], hint:"Verb after <em>to</em> — means to stop feeding milk.", model:"wean" },
+
+    { sentence:"The baby wouldn't stop crying on the train to Paddington until his mum found his ____ buried at the bottom of the changing bag.",
+
+      answers:["dummy"], hint:"A rubber/silicone object babies suck on for comfort.", model:"dummy" },
+
+    { sentence:"The little ____ was absolutely fascinated by the red double-decker buses and kept pointing and shouting at every single one that went past.",
+
+      answers:["toddler"], hint:"A small child who has just learned to walk.", model:"toddler" },
+
+    { sentence:"They had to fold up the ____ and carry it down the stairs at the Tube station, as the lift was out of order.",
+
+      answers:["pushchair"], hint:"A wheeled seat for transporting young children (US: stroller).", model:"pushchair" },
+
+    { sentence:"They had to make an emergency stop at a motorway service station because the baby had a dirty ____ that urgently needed changing.",
+
+      answers:["nappy","nappies"], hint:"What goes around a baby's bottom (US: diaper).", model:"nappy" },
+
+  ],
+
+  p4: {
+
+    terms: [
+
+      {id:1,  t:"The pitch",            a:"D"},
+
+      {id:2,  t:"The dugout",           a:"H"},
+
+      {id:3,  t:"The terraces / stands",a:"E"},
+
+      {id:4,  t:"The turnstile",        a:"F"},
+
+      {id:5,  t:"The touchline",        a:"A"},
+
+      {id:6,  t:"The penalty box",      a:"B"},
+
+      {id:7,  t:"The concourse",        a:"J"},
+
+      {id:8,  t:"The press box",        a:"G"},
+
+      {id:9,  t:"The crossbar",         a:"C"},
+
+      {id:10, t:"The technical area",   a:"I"},
+
+    ],
+
+    defs: [
+
+      {k:"A", d:"The boundary line that runs along the side of the field, marking the edge of the playing area."},
+
+      {k:"B", d:"The rectangular area in front of the goal where the goalkeeper can handle the ball and where specific fouls result in a penalty kick."},
+
+      {k:"C", d:"The horizontal metal bar that forms the top of the goal frame."},
+
+      {k:"D", d:"The actual grass or artificial surface where the football match is played."},
+
+      {k:"E", d:"The concrete or seating sections where spectators sit or stand to watch the match."},
+
+      {k:"F", d:"The gated entrance with revolving bars where fans scan their tickets to enter the stadium ground."},
+
+      {k:"G", d:"The specialised seating area reserved for journalists, commentators, and media reporters."},
+
+      {k:"H", d:"The low-roofed bench area slightly below pitch level where substitute players and coaching staff sit during the game."},
+
+      {k:"I", d:"The designated white-lined zone in front of the dugout where the manager is allowed to stand and give instructions."},
+
+      {k:"J", d:"The wide indoor hallway or gallery behind the stands where fans buy food, drinks, and merchandise before the match."},
+
+    ]
+
+  },
+
+  p5: [
+
+    { sentence:"The sports physiotherapy clinic opens precisely ____ 8:00 AM every morning.",
+
+      answers:["at"], hint:"Clock time → use <strong>at</strong>.", model:"at" },
+
+    { sentence:"Arsenal will play their next home match ____ Sunday afternoon.",
+
+      answers:["on"], hint:"Specific day (Sunday) → use <strong>on</strong>.", model:"on" },
+
+    { sentence:"Many football clubs do a massive amount of transfer business ____ January.",
+
+      answers:["in"], hint:"Month with no specific date → use <strong>in</strong>.", model:"in" },
+
+    { sentence:"The first modern Olympic Games took place ____ the 19th century.",
+
+      answers:["in"], hint:"Centuries → use <strong>in</strong>.", model:"in" },
+
+    { sentence:"The player fractured his ankle during a pre-season friendly match ____ July 15th.",
+
+      answers:["on"], hint:"Specific date → use <strong>on</strong>.", model:"on" },
+
+    { sentence:"The medical team likes to review all player recovery profiles ____ the end of the week.",
+
+      answers:["at"], hint:"Fixed point in time (<em>the end of</em>) → use <strong>at</strong>.", model:"at" },
+
+    { sentence:"It gets incredibly hot to train outdoors ____ midday during the summer months.",
+
+      answers:["at"], hint:"Midday / noon / midnight → use <strong>at</strong>.", model:"at" },
+
+    { sentence:"The manager expects everyone to be back at the training ground ____ Monday morning.",
+
+      answers:["on"], hint:"Day + part of day (Monday morning) → use <strong>on</strong>.", model:"on" },
+
+    { sentence:"Technology in sports science has improved drastically ____ the last ten years.",
+
+      answers:["in"], hint:"Long period of years → use <strong>in</strong>.", model:"in" },
+
+    { sentence:"My sister is expecting a baby; the due date is sometime ____ autumn.",
+
+      answers:["in"], hint:"Seasons → use <strong>in</strong>.", model:"in" },
+
+  ],
+
+
+
+  /* =========================  DATA — CLASS 2  ========================= */
+
+  // p6: Error identification & correction (Present Perfect)
+  // Each item has: errorHTML (sentence with <span class="underlined">...</span>), correct sentence, hint, model
+  p6: [
+
+    { es:'I have worked here <span class="underlined">since</span> three years.',
+
+      answers:["i have worked here for three years","i've worked here for three years"],
+
+      hint:"<em>Since</em> needs a starting point (a date/event). For a duration of time → use <strong>for</strong>.",
+
+      model:"I have worked here for three years." },
+
+    { es:'She has <span class="underlined">went</span> to the treatment room already.',
+
+      answers:["she has gone to the treatment room already","she's gone to the treatment room already",
+
+               "she has already gone to the treatment room","she's already gone to the treatment room"],
+
+      hint:"<em>Go</em> is irregular: go → went → <strong>gone</strong>. After <em>has</em>, use the past participle.",
+
+      model:"She has already gone to the treatment room." },
+
+    { es:'The player <span class="underlined">has recovered</span> last season after surgery.',
+
+      answers:["the player recovered last season after surgery"],
+
+      hint:"<em>Last season</em> is a finished time period → use the <strong>past simple</strong>, not present perfect.",
+
+      model:"The player recovered last season after surgery." },
+
+    { es:'Have you <span class="underlined">ever gone</span> to the Emirates Stadium?',
+
+      answers:["have you ever been to the emirates stadium"],
+
+      hint:"For places you have visited, use <strong>been to</strong>, not <em>gone to</em> (gone = they are still there).",
+
+      model:"Have you ever been to the Emirates Stadium?" },
+
+    { es:'He has just <span class="underlined">announced</span> already the starting lineup.',
+
+      answers:["he has just announced the starting lineup","he's just announced the starting lineup",
+
+               "he has already announced the starting lineup","he's already announced the starting lineup"],
+
+      hint:"<strong>Just</strong> and <strong>already</strong> mean the same thing here — don't use both together.",
+
+      model:"He has just announced the starting lineup." },
+
+    { es:'I <span class="underlined">have seen</span> him at the training ground yesterday.',
+
+      answers:["i saw him at the training ground yesterday"],
+
+      hint:"<em>Yesterday</em> is a finished, specific time → use the <strong>past simple</strong>.",
+
+      model:"I saw him at the training ground yesterday." },
+
+    { es:'The physio <span class="underlined">haven\'t</span> assessed the injury yet.',
+
+      answers:["the physio hasn't assessed the injury yet","the physio has not assessed the injury yet"],
+
+      hint:"<em>Physio</em> is singular (he/she/it) → use <strong>hasn't</strong>, not <em>haven't</em>.",
+
+      model:"The physio hasn't assessed the injury yet." },
+
+    { es:'How long have you been <span class="underlined">working</span> in Arsenal?',
+
+      answers:["how long have you been working at arsenal","how long have you worked at arsenal",
+
+               "how long have you been working for arsenal","how long have you worked for arsenal"],
+
+      hint:"We work <strong>at</strong> or <strong>for</strong> a club/company, not <em>in</em>.",
+
+      model:"How long have you been working at Arsenal?" },
+
+    { es:'We have <span class="underlined">already</span> not received the scan results.',
+
+      answers:["we haven't received the scan results yet","we have not received the scan results yet"],
+
+      hint:"In negative sentences, use <strong>yet</strong> at the end, not <em>already</em>.",
+
+      model:"We haven't received the scan results yet." },
+
+  ],
+
+  // p7: Physio vocab matching
+  p7: {
+
+    terms: [
+
+      {id:1,  t:"Range of motion",      a:"C"},
+
+      {id:2,  t:"Ultrasound therapy",   a:"G"},
+
+      {id:3,  t:"Cryotherapy",          a:"A"},
+
+      {id:4,  t:"Electrotherapy",       a:"H"},
+
+      {id:5,  t:"Gait analysis",        a:"E"},
+
+      {id:6,  t:"Hydrotherapy",         a:"J"},
+
+      {id:7,  t:"Proprioception",       a:"D"},
+
+      {id:8,  t:"Massage gun",          a:"F"},
+
+      {id:9,  t:"Compression bandage",  a:"B"},
+
+      {id:10, t:"Taping / strapping",   a:"I"},
+
+    ],
+
+    defs: [
+
+      {k:"A", d:"The application of cold — ice packs or cold water immersion — to reduce swelling and pain after an acute injury."},
+
+      {k:"B", d:"A tight wrap applied around a joint or limb to reduce swelling and provide support during recovery."},
+
+      {k:"C", d:"The full extent of movement possible at a joint, measured in degrees and used to track rehabilitation progress."},
+
+      {k:"D", d:"The body's ability to sense its own position, movement, and balance — often trained after ankle or knee injuries."},
+
+      {k:"E", d:"A detailed assessment of how a patient walks or runs, used to identify abnormal movement patterns and injury risk."},
+
+      {k:"F", d:"A handheld percussive device used to deliver rapid pulses of pressure to muscle tissue to relieve tension and soreness."},
+
+      {k:"G", d:"The use of high-frequency sound waves to treat soft tissue injuries by promoting blood flow and tissue healing."},
+
+      {k:"H", d:"The use of controlled electrical currents to stimulate muscles, reduce pain, or speed up tissue repair."},
+
+      {k:"I", d:"The technique of applying adhesive tape directly to the skin to support, stabilise, or offload a joint or muscle group."},
+
+      {k:"J", d:"A form of rehabilitation that takes place in a pool, using the buoyancy of water to reduce load on injured joints."},
+
+    ]
+
+  },
+
+  // p8: Baby shopping at Boots gap-fill
+  p8: [
+
+    { sentence:"The midwife suggested Eneco buy a ____ so his wife could express milk and store it for night feeds.",
+
+      answers:["breast pump"], hint:"A device that extracts milk from the breast.", model:"breast pump" },
+
+    { sentence:"They went through endless ____ in the first two weeks — perfect for wiping up sick, dribble, and everything in between.",
+
+      answers:["muslins","muslin"], hint:"A thin cotton square — the most-used item for any new parent.", model:"muslins" },
+
+    { sentence:"The health visitor warned them to apply ____ at every nappy change to protect the baby's delicate skin.",
+
+      answers:["nappy cream"], hint:"A thick cream that prevents and soothes nappy rash.", model:"nappy cream" },
+
+    { sentence:"Eneco checked the baby's temperature using the digital ____ — thankfully it was completely normal.",
+
+      answers:["thermometer"], hint:"You use this to measure body temperature.", model:"thermometer" },
+
+    { sentence:"The nurse at Boots advised them to use ____ pads instead of wipes to clean a newborn's face and eyes — much gentler.",
+
+      answers:["cotton wool"], hint:"Soft white fluffy material used for gentle cleaning.", model:"cotton wool" },
+
+    { sentence:"They bought a microwave ____ to make sure all the bottles and dummies were completely germ-free before use.",
+
+      answers:["steriliser"], hint:"A device that kills bacteria on feeding equipment.", model:"steriliser" },
+
+    { sentence:"A packet of ____ is essential in every nappy bag — you can never have too many when you're out and about.",
+
+      answers:["baby wipes"], hint:"Moist disposable cloths for cleaning babies.", model:"baby wipes" },
+
+    { sentence:"As his wife couldn't always breastfeed at night, they also bought a tin of ____ as a back-up.",
+
+      answers:["formula"], hint:"Powdered milk substitute mixed with water for bottle-feeding.", model:"formula" },
+
+  ],
+
+  // p9: Stadium people matching
+  p9: {
+
+    terms: [
+
+      {id:1,  t:"Steward",          a:"C"},
+
+      {id:2,  t:"Ball boy / girl",  a:"F"},
+
+      {id:3,  t:"Kit man",          a:"H"},
+
+      {id:4,  t:"Groundskeeper",    a:"A"},
+
+      {id:5,  t:"Match delegate",   a:"I"},
+
+      {id:6,  t:"Fourth official",  a:"E"},
+
+      {id:7,  t:"Commentator",      a:"G"},
+
+      {id:8,  t:"Scout",            a:"J"},
+
+      {id:9,  t:"Club doctor",      a:"D"},
+
+      {id:10, t:"Analyst",          a:"B"},
+
+    ],
+
+    defs: [
+
+      {k:"A", d:"The person responsible for maintaining the pitch surface, cutting the grass, and ensuring the playing area is in top condition."},
+
+      {k:"B", d:"A staff member who reviews match footage and data to help the manager and coaches make tactical decisions."},
+
+      {k:"C", d:"A person employed to manage crowd safety, check tickets, and direct fans safely around the stadium on match day."},
+
+      {k:"D", d:"The qualified physician responsible for the health and medical care of all players and staff at the club."},
+
+      {k:"E", d:"The referee's assistant who manages substitution boards, signals added time, and monitors conduct in the technical area."},
+
+      {k:"F", d:"A young person positioned around the perimeter of the pitch to quickly retrieve the ball and return it to players."},
+
+      {k:"G", d:"The broadcaster who describes the match live, providing play-by-play commentary for TV or radio audiences."},
+
+      {k:"H", d:"The staff member who washes, organises, labels, and distributes all the players' training and match-day kit."},
+
+      {k:"I", d:"An official appointed by the football association to observe, report on, and ensure a match runs according to regulations."},
+
+      {k:"J", d:"A person employed by a club to watch matches and identify talented players who could be recruited in the future."},
+
+    ]
+
+  },
+
+  // p10: Prepositions at/in/for/since
+  p10: [
+
+    { sentence:"Eneco has been a physiotherapist ____ twelve years.",
+
+      answers:["for"], hint:"Twelve years is a <strong>duration</strong> → use <strong>for</strong>.", model:"for" },
+
+    { sentence:"He has lived in London ____ the start of the season.",
+
+      answers:["since"], hint:"<em>The start of the season</em> is a starting point in the past → use <strong>since</strong>.", model:"since" },
+
+    { sentence:"The baby woke up four times ____ the night.",
+
+      answers:["in"], hint:"Part of the day as a general period → use <strong>in</strong>.", model:"in" },
+
+    { sentence:"Arsenal play their next home match ____ the evening.",
+
+      answers:["in"], hint:"Part of the day (evening/morning/afternoon) → use <strong>in</strong>.", model:"in" },
+
+    { sentence:"The player has been recovering ____ six weeks.",
+
+      answers:["for"], hint:"Six weeks is a <strong>duration</strong> → use <strong>for</strong>.", model:"for" },
+
+    { sentence:"She arrived at the training ground ____ dawn to prepare the treatment room.",
+
+      answers:["at"], hint:"Dawn / noon / midnight / night are precise points → use <strong>at</strong>.", model:"at" },
+
+    { sentence:"He hasn't slept properly ____ the baby was born.",
+
+      answers:["since"], hint:"<em>The baby was born</em> is the starting point → use <strong>since</strong>.", model:"since" },
+
+    { sentence:"The squad has been preparing for this match ____ two weeks.",
+
+      answers:["for"], hint:"Two weeks is a <strong>duration</strong> → use <strong>for</strong>.", model:"for" },
+
+    { sentence:"Eneco has been at Arsenal ____ last summer.",
+
+      answers:["since"], hint:"<em>Last summer</em> is the starting point → use <strong>since</strong>.", model:"since" },
+
+    { sentence:"The physio team were busy ____ the entire second half.",
+
+      answers:["for"], hint:"<em>The entire second half</em> is a duration of time → use <strong>for</strong>.", model:"for" },
+
+  ],
+
+};
+
+
+
+/* =========================  STATE  ========================= */
+
+const STORAGE_KEY = 'eneco_english_progress_v2';
+
+const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+
+
+/* =========================  AUDIO ENGINE ========================= */
+
+function speakText(text) {
+
+  if (!('speechSynthesis' in window)) return;
+
+  window.speechSynthesis.cancel();
+
+  // Silent pause utterance (~400 ms) before the real speech kicks in
+  const pause = new SpeechSynthesisUtterance('\u00A0\u00A0\u00A0');
+
+  pause.lang = 'en-GB';
+
+  pause.volume = 0;
+
+  pause.rate = 0.5;
+
+  const utterance = new SpeechSynthesisUtterance(text);
+
+  utterance.lang = 'en-GB';
+
+  utterance.rate = 0.85;
+
+  pause.onend = () => { window.speechSynthesis.speak(utterance); };
+
+  window.speechSynthesis.speak(pause);
+
+}
+
+
+
+/* =========================  HELPERS  ========================= */
+
+function norm(s){
+
+  return (s||"").toString().toLowerCase()
+
+    .replace(/[.,!?¡¿;:"']/g,'').replace(/\s+/g,' ').trim();
+
+}
+
+function shuffle(arr){
+
+  const a = [...arr];
+
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+
+  return a;
+
+}
+
+function stripHTML(s){ return s.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim(); }
+
+
+
+/* =========================  RENDER GAP FILLERS  ========================= */
+
+function renderTextSection(panelId, items){
+
+  const wrap = document.getElementById(panelId+'-questions');
+
+  wrap.innerHTML = '';
+
+  items.forEach((item, idx) => {
+
+    const realIdx = item._origIdx;
+
+    const stored = (state[panelId] && state[panelId][realIdx]) || {};
+
+    const qEl = document.createElement('div');
+
+    qEl.className = 'q';
+
+    qEl.dataset.idx = realIdx;
+
+    const audioTarget = item.model ? item.model.replace(/"/g, '&quot;') : '';
+
+    const includeAudioButton = (panelId !== 'p5' && panelId !== 'p10');
+
+    const audioButtonHTML = includeAudioButton
+
+      ? `<button class="btn-audio" title="Listen Pronunciation" onclick="speakText('${audioTarget}')">🔊 Pronounce</button>`
+
+      : '';
+
+    // Error correction panel uses errorHTML; others use es or sentence
+    const isError = panelId === 'p6';
+
+    let questionDisplay = '';
+
+    if(isError){
+
+      questionDisplay = `<div class="error-sentence">${item.es}</div>`;
+
+    } else {
+
+      questionDisplay = `<span class="q-text">${item.es || item.sentence}</span>`;
+
+    }
+
+    qEl.innerHTML = `
+
+      <span class="q-num">${idx+1}</span>
+
+      ${isError ? '' : ''}${questionDisplay}
+
+      <input class="answer" type="text" placeholder="${isError ? 'Type the corrected sentence...' : 'Type your answer...'}" value="${(stored.value||'').replace(/"/g,'&quot;')}" autocomplete="off" />
+
+      <div class="q-actions">
+
+        <button class="btn small" onclick="checkOne('${panelId}',${realIdx},this)">Check</button>
+
+        <button class="btn ghost small" onclick="toggleHint(this)">💡 Hint</button>
+
+        <button class="btn ghost small" onclick="showModel('${panelId}',${realIdx},this)">👁 Show answer</button>
+
+        ${audioButtonHTML}
+
+      </div>
+
+      <div class="hint">${item.hint}</div>
+
+      <div class="feedback"></div>
+
+    `;
+
+    wrap.appendChild(qEl);
+
+    if(stored.checked){
+
+      const fb = qEl.querySelector('.feedback');
+
+      fb.className = 'feedback show ' + (stored.correct ? 'ok' : 'bad');
+
+      fb.innerHTML = stored.correct
+
+        ? '✓ Correct!'
+
+        : `✗ Not quite. <span class="model">Model answer: ${item.model}</span>`;
+
+    }
+
+  });
+
+  updateScore(panelId);
+
+}
+
+
+
+function checkOne(panelId, idx, btn){
+
+  const q = btn.closest('.q');
+
+  const input = q.querySelector('input.answer');
+
+  const fb = q.querySelector('.feedback');
+
+  const item = data[panelId].find(x => x._origIdx === idx);
+
+  const val = norm(input.value);
+
+  const ok = item.answers.map(norm).includes(val);
+
+  fb.className = 'feedback show ' + (ok ? 'ok' : 'bad');
+
+  fb.innerHTML = ok ? '✓ Correct!' :
+
+    `✗ Not quite. <span class="model">Model answer: ${item.model}</span>`;
+
+  state[panelId] = state[panelId] || {};
+
+  state[panelId][idx] = { value:input.value, checked:true, correct:ok };
+
+  save();
+
+  updateScore(panelId);
+
+}
+
+
+
+function showModel(panelId, idx, btn){
+
+  const q = btn.closest('.q');
+
+  const fb = q.querySelector('.feedback');
+
+  const item = data[panelId].find(x => x._origIdx === idx);
+
+  fb.className = 'feedback show bad';
+
+  fb.innerHTML = `<span class="model">Model answer: ${item.model}</span>`;
+
+}
+
+
+
+function toggleHint(btn){
+
+  const hint = btn.closest('.q').querySelector('.hint');
+
+  hint.classList.toggle('show');
+
+}
+
+
+
+function checkAll(panelId){
+
+  document.querySelectorAll(`#${panelId} .q .btn`).forEach(b => {
+
+    if(b.textContent === 'Check') b.click();
+
+  });
+
+}
+
+
+
+function resetSection(panelId){
+
+  delete state[panelId];
+
+  save();
+
+  if(['p1','p3','p5','p6','p8','p10'].includes(panelId)){
+
+    data[panelId].forEach((it,i)=>it._origIdx=i);
+
+    renderTextSection(panelId, data[panelId]);
+
+  } else {
+
+    renderMatchSection(panelId);
+
+  }
+
+}
+
+
+
+function shuffleSection(panelId){
+
+  const items = data[panelId].map((it,i)=>({...it, _origIdx:i}));
+
+  renderTextSection(panelId, shuffle(items));
+
+}
+
+
+
+/* =========================  RENDER MATCHING PANELS  ========================= */
+
+function renderMatchSection(panelId){
+
+  const block = data[panelId];
+
+  block.terms.forEach((t,i)=>t._origIdx=i);
+
+  block.defs.forEach((d,i)=>d._origIdx=i);
+
+  const termsWrap = document.getElementById(panelId+'-terms');
+
+  const defsWrap = document.getElementById(panelId+'-defs');
+
+  termsWrap.innerHTML = '';
+
+  block.terms.forEach((t, i) => {
+
+    const stored = (state[panelId] && state[panelId][t.id]) || {};
+
+    const row = document.createElement('div');
+
+    row.className = 'match-row';
+
+    const opts = block.defs.map(d => `<option value="${d.k}" ${stored.choice===d.k?'selected':''}>${d.k}</option>`).join('');
+
+    const protectedTerm = t.t.replace(/'/g, "\\'");
+
+    row.innerHTML = `
+
+      <strong>${t.id}.</strong>
+
+      <span style="flex:1">${t.t}</span>
+
+      <button class="btn-audio" title="Listen Term" onclick="speakText('${protectedTerm}')">🔊</button>
+
+      <select data-id="${t.id}">
+
+        <option value="">—</option>
+
+        ${opts}
+
+      </select>
+
+    `;
+
+    termsWrap.appendChild(row);
+
+  });
+
+  defsWrap.innerHTML = '<strong>Definitions:</strong><br>' +
+
+    block.defs.map(d => `<div style="margin-top:6px"><strong>${d.k}.</strong> ${d.d}</div>`).join('');
+
+  updateScore(panelId);
+
+}
+
+
+
+function checkMatch(panelId){
+
+  const block = data[panelId];
+
+  state[panelId] = state[panelId] || {};
+
+  document.querySelectorAll(`#${panelId}-terms select`).forEach(sel => {
+
+    const id = +sel.dataset.id;
+
+    const term = block.terms.find(t => t.id === id);
+
+    const choice = sel.value;
+
+    const ok = choice === term.a;
+
+    state[panelId][id] = { choice, checked:true, correct:ok };
+
+    sel.style.background = !choice ? '#fff' : (ok ? '#e8f7ee' : '#fdecea');
+
+    sel.style.borderColor = !choice ? '' : (ok ? '#7fc99a' : '#e8a59d');
+
+  });
+
+  save();
+
+  updateScore(panelId);
+
+}
+
+
+
+function shuffleMatchDefs(panelId){
+
+  const block = data[panelId];
+
+  block.defs = shuffle(block.defs);
+
+  renderMatchSection(panelId);
+
+}
+
+
+
+/* =========================  TRACKING PROGRESS  ========================= */
+
+function updateScore(panelId){
+
+  const el = document.getElementById('score-'+panelId);
+
+  let total, correct = 0;
+
+  if(['p2','p4','p7','p9'].includes(panelId)){
+
+    total = data[panelId].terms.length;
+
+    const s = state[panelId] || {};
+
+    correct = Object.values(s).filter(x => x.correct).length;
+
+  } else {
+
+    total = data[panelId].length;
+
+    const s = state[panelId] || {};
+
+    correct = Object.values(s).filter(x => x.correct).length;
+
+  }
+
+  el.textContent = `${correct} / ${total}`;
+
+}
+
+
+
+/* =========================  CLASS SWITCHER  ========================= */
+
+function switchClass(classId, btn){
+
+  document.querySelectorAll('.class-btn').forEach(b => b.classList.remove('active'));
+
+  document.querySelectorAll('.class-panel').forEach(p => p.classList.remove('active'));
+
+  btn.classList.add('active');
+
+  document.getElementById(classId).classList.add('active');
+
+}
+
+
+
+/* =========================  NAVIGATION TABS — per class  ========================= */
+
+document.querySelectorAll('#tabs-c1 .tab').forEach(t => {
+
+  t.addEventListener('click', () => {
+
+    document.querySelectorAll('#tabs-c1 .tab').forEach(x => x.classList.remove('active'));
+
+    document.querySelectorAll('#c1 .panel').forEach(x => x.classList.remove('active'));
+
+    t.classList.add('active');
+
+    document.getElementById(t.dataset.tab).classList.add('active');
+
+  });
+
+});
+
+document.querySelectorAll('#tabs-c2 .tab').forEach(t => {
+
+  t.addEventListener('click', () => {
+
+    document.querySelectorAll('#tabs-c2 .tab').forEach(x => x.classList.remove('active'));
+
+    document.querySelectorAll('#c2 .panel').forEach(x => x.classList.remove('active'));
+
+    t.classList.add('active');
+
+    document.getElementById(t.dataset.tab).classList.add('active');
+
+  });
+
+});
+
+
+
+function resetAll(){
+
+  if(!confirm('Clear all saved progress on this device?')) return;
+
+  localStorage.removeItem(STORAGE_KEY);
+
+  location.reload();
+
+}
+
+
+
+/* =========================  INITIALIZE  ========================= */
+
+['p1','p3','p5'].forEach(p => {
+
+  data[p].forEach((it,i)=>it._origIdx=i);
+
+  renderTextSection(p, data[p]);
+
+});
+
+['p2','p4'].forEach(renderMatchSection);
+
+['p6','p8','p10'].forEach(p => {
+
+  data[p].forEach((it,i)=>it._origIdx=i);
+
+  renderTextSection(p, data[p]);
+
+});
+
+['p7','p9'].forEach(renderMatchSection);
+
+
+
+/* =========================  RONDOS DATA  ========================= */
+// Full pool of Spanish → English pairs drawn from both lessons
+const rondosPool = [
+  // Injuries (Class 1)
+  {es:"Desgarro de isquiotibiales", en:"Hamstring strain"},
+  {es:"Rotura de ligamento cruzado", en:"ACL tear"},
+  {es:"Conmoción cerebral", en:"Concussion"},
+  {es:"Fractura", en:"Fracture"},
+  {es:"Esguince de tobillo", en:"Ankle sprain"},
+  {es:"Distensión de ingle", en:"Groin strain"},
+  {es:"Tendinitis", en:"Tendinitis"},
+  {es:"Periostitis tibial", en:"Shin splints"},
+  {es:"Luxación", en:"Dislocation"},
+  {es:"Contusión / moretón", en:"Contusion"},
+  // Baby words C1
+  {es:"Pañal", en:"Nappy"},
+  {es:"Cochecito de bebé", en:"Pushchair"},
+  {es:"Niño pequeño que empieza a caminar", en:"Toddler"},
+  {es:"Destetar", en:"Wean"},
+  {es:"Chupete", en:"Dummy"},
+  // Stadium parts C1
+  {es:"El campo / el césped", en:"The pitch"},
+  {es:"El banquillo", en:"The dugout"},
+  {es:"Las gradas", en:"The terraces / stands"},
+  {es:"El torniquete de entrada", en:"The turnstile"},
+  {es:"La línea de banda", en:"The touchline"},
+  {es:"El área de penalti", en:"The penalty box"},
+  {es:"El pasillo interior del estadio", en:"The concourse"},
+  {es:"La tribuna de prensa", en:"The press box"},
+  {es:"El larguero", en:"The crossbar"},
+  {es:"El área técnica", en:"The technical area"},
+  // Physio vocab C2
+  {es:"Rango de movimiento", en:"Range of motion"},
+  {es:"Ecografía terapéutica", en:"Ultrasound therapy"},
+  {es:"Crioterapia", en:"Cryotherapy"},
+  {es:"Electroterapia", en:"Electrotherapy"},
+  {es:"Análisis de la marcha", en:"Gait analysis"},
+  {es:"Hidroterapia", en:"Hydrotherapy"},
+  {es:"Propiocepción", en:"Proprioception"},
+  {es:"Pistola de masaje", en:"Massage gun"},
+  {es:"Vendaje compresivo", en:"Compression bandage"},
+  {es:"Vendaje / esparadrapo", en:"Taping / strapping"},
+  // Baby shopping C2
+  {es:"Sacaleches", en:"Breast pump"},
+  {es:"Muselina", en:"Muslin"},
+  {es:"Pelele / body de bebé", en:"Babygrow"},
+  {es:"Crema para rozaduras", en:"Nappy cream"},
+  {es:"Termómetro", en:"Thermometer"},
+  {es:"Algodón", en:"Cotton wool"},
+  {es:"Esterilizador", en:"Steriliser"},
+  {es:"Toallitas para bebé", en:"Baby wipes"},
+  {es:"Leche de fórmula", en:"Formula"},
+  // Stadium people C2
+  {es:"Vigilante / acomodador", en:"Steward"},
+  {es:"Recogepelotas", en:"Ball boy / girl"},
+  {es:"Utillero", en:"Kit man"},
+  {es:"Jardinero / encargado del campo", en:"Groundskeeper"},
+  {es:"Delegado de partido", en:"Match delegate"},
+  {es:"Cuarto árbitro", en:"Fourth official"},
+  {es:"Comentarista", en:"Commentator"},
+  {es:"Ojeador", en:"Scout"},
+  {es:"Médico del club", en:"Club doctor"},
+  {es:"Analista", en:"Analyst"},
+];
+
+let rondosActive = []; // current 10 pairs
+
+function buildRondos(){
+  // Pick 10 random pairs
+  const picked = shuffle(rondosPool).slice(0, 10);
+  rondosActive = picked;
+
+  // Build shuffled English options list
+  const engOptions = shuffle(picked.map(p => p.en));
+
+  const wrap = document.getElementById('rondos-pairs');
+  wrap.innerHTML = '';
+  document.getElementById('rondos-score').textContent = '0 / 10';
+
+  picked.forEach((pair, i) => {
+    const row = document.createElement('div');
+    row.className = 'rondo-pair';
+    const opts = engOptions.map(e =>
+      `<option value="${e.replace(/"/g,'&quot;')}">${e}</option>`
+    ).join('');
+    row.innerHTML = `
+      <span class="rondo-es">${pair.es}</span>
+      <select class="rondo-select" data-idx="${i}">
+        <option value="">— choose —</option>
+        ${opts}
+      </select>
+      <button class="btn-audio" style="flex-shrink:0" title="Hear English" onclick="speakText('${pair.en.replace(/'/g,"\\'")}')">🔊</button>
+    `;
+    wrap.appendChild(row);
+  });
+}
+
+function checkRondos(){
+  let correct = 0;
+  document.querySelectorAll('.rondo-select').forEach(sel => {
+    const idx = +sel.dataset.idx;
+    const expected = rondosActive[idx].en;
+    const chosen = sel.value;
+    const ok = chosen.toLowerCase() === expected.toLowerCase();
+    if(ok) correct++;
+    sel.style.background = !chosen ? '#fff' : (ok ? '#e8f7ee' : '#fdecea');
+    sel.style.borderColor = !chosen ? '' : (ok ? '#7fc99a' : '#e8a59d');
+    // Show correct answer if wrong
+    if(chosen && !ok){
+      sel.title = `✓ ${expected}`;
+    }
+  });
+  document.getElementById('rondos-score').textContent = `${correct} / 10`;
+}
+
+function openRondos(){
+  buildRondos();
+  document.getElementById('rondos-modal-bg').classList.add('open');
+}
+
+function closeRondos(){
+  document.getElementById('rondos-modal-bg').classList.remove('open');
+}
+
+function closeRondosOnBg(e){
+  if(e.target === document.getElementById('rondos-modal-bg')) closeRondos();
+}
+
+
+/* ===== CLASS 3 — -ed Ending Pronunciation Sort ===== */
+const ED_ROUNDS = {
+  1:[{w:'walked',a:'t'},{w:'missed',a:'t'},{w:'helped',a:'t'},
+     {w:'called',a:'d'},{w:'played',a:'d'},{w:'listened',a:'d'},{w:'arrived',a:'d'},
+     {w:'wanted',a:'id'},{w:'started',a:'id'},{w:'needed',a:'id'}],
+  2:[{w:'worked',a:'t'},{w:'talked',a:'t'},{w:'passed',a:'t'},{w:'laughed',a:'t'},
+     {w:'moved',a:'d'},{w:'planned',a:'d'},{w:'used',a:'d'},{w:'followed',a:'d'},
+     {w:'decided',a:'id'},{w:'waited',a:'id'}],
+  3:[{w:'watched',a:'t'},{w:'rushed',a:'t'},{w:'dropped',a:'t'},
+     {w:'managed',a:'d'},{w:'showed',a:'d'},{w:'realised',a:'d'},{w:'served',a:'d'},
+     {w:'ended',a:'id'},{w:'invited',a:'id'},{w:'recommended',a:'id'}]
+};
+let edSel=null, edSelRound=null;
+
+function edSpeak(text,event){ if(event)event.stopPropagation(); speakText(text); }
+
+function edToggleKey(id){ const el=document.getElementById(id); el.style.display=el.style.display==='block'?'none':'block'; }
+
+function edShowRound(n){
+  [1,2,3].forEach(i=>{
+    document.getElementById('ed-round'+i).classList.remove('active');
+    document.getElementById('ed-rbtn'+i).classList.remove('active');
+  });
+  document.getElementById('ed-round'+n).classList.add('active');
+  document.getElementById('ed-rbtn'+n).classList.add('active');
+}
+
+function edMakeDChip(word,ans,zone,r){
+  const d=document.createElement('div');
+  d.className='dchip';
+  d.dataset.word=word; d.dataset.ans=ans; d.dataset.zone=zone; d.dataset.round=r;
+  d.innerHTML=word+' <button class="spk" style="font-size:13px;padding:2px 5px;display:inline;" onclick="edSpeak(\''+word+'\',event)">&#x1F50A;</button>';
+  d.addEventListener('click',function(e){ if(e.target.tagName!=='BUTTON') edReturnDChip(this); });
+  return d;
+}
+
+function edBuildBanks(){
+  [1,2,3].forEach(r=>{
+    const bank=document.getElementById('ed-bank'+r);
+    bank.innerHTML='';
+    const items=[...ED_ROUNDS[r]].sort(()=>Math.random()-0.5);
+    items.forEach(item=>{
+      const wrap=document.createElement('div'); wrap.className='chip-wrap';
+      const chip=document.createElement('span');
+      chip.className='chip'; chip.textContent=item.w;
+      chip.dataset.word=item.w; chip.dataset.ans=item.a; chip.dataset.round=r;
+      chip.draggable=true;
+      chip.addEventListener('dragstart',e=>{ e.dataTransfer.setData('text/plain',item.w+'|'+item.a+'|'+r); chip.style.opacity='0.4'; });
+      chip.addEventListener('dragend',()=>{ chip.style.opacity=''; });
+      chip.addEventListener('click',()=>edSelectChip(chip,r));
+      const spkBtn=document.createElement('button');
+      spkBtn.className='spk'; spkBtn.innerHTML='&#x1F50A;'; spkBtn.title='Hear: '+item.w;
+      spkBtn.addEventListener('click',e=>{ e.stopPropagation(); edSpeak(item.w,e); });
+      wrap.appendChild(chip); wrap.appendChild(spkBtn); bank.appendChild(wrap);
+    });
+  });
+}
+
+function edSelectChip(chip,r){
+  if(chip.classList.contains('placed'))return;
+  if(edSel&&edSel!==chip) edSel.classList.remove('sel');
+  if(edSel===chip){ chip.classList.remove('sel'); edSel=null; edSelRound=null; return; }
+  edSel=chip; edSelRound=r; chip.classList.add('sel');
+}
+
+function edDropChip(event,zone,r){
+  event.stopPropagation();
+  if(!edSel||edSelRound!==r)return;
+  document.getElementById('ed-z'+r+zone).appendChild(edMakeDChip(edSel.dataset.word,edSel.dataset.ans,zone,r));
+  edSel.classList.add('placed'); edSel.classList.remove('sel');
+  edSel=null; edSelRound=null;
+  document.getElementById('ed-sfb'+r).style.display='none';
+}
+
+function edReturnDChip(dchip){
+  const word=dchip.dataset.word, r=parseInt(dchip.dataset.round);
+  dchip.remove();
+  const orig=document.querySelector('#ed-bank'+r+' .chip[data-word="'+word+'"]');
+  if(orig) orig.classList.remove('placed','sel');
+}
+
+function edSetupDropZones(){
+  [1,2,3].forEach(r=>{
+    ['t','d','id'].forEach(z=>{
+      const col=document.getElementById('ed-z'+r+z).parentElement;
+      col.addEventListener('dragover',e=>{ e.preventDefault(); col.style.background='#fef3c7'; });
+      col.addEventListener('dragleave',()=>{ col.style.background=''; });
+      col.addEventListener('drop',e=>{
+        e.preventDefault(); col.style.background='';
+        const parts=e.dataTransfer.getData('text/plain').split('|');
+        const w=parts[0], a=parts[1], rr=parseInt(parts[2]);
+        if(rr!==r)return;
+        const orig=document.querySelector('#ed-bank'+r+' .chip[data-word="'+w+'"]');
+        if(!orig||orig.classList.contains('placed'))return;
+        document.getElementById('ed-z'+r+z).appendChild(edMakeDChip(w,a,z,r));
+        orig.classList.add('placed');
+        document.getElementById('ed-sfb'+r).style.display='none';
+      });
+    });
+  });
+}
+
+function edCheckRound(r){
+  let ok=0,tot=0,wrong=[];
+  ['t','d','id'].forEach(z=>{
+    document.querySelectorAll('#ed-z'+r+z+' .dchip').forEach(d=>{
+      tot++;
+      if(d.dataset.ans===z){ d.style.background='#d4edda'; d.style.borderColor='#6b8f71'; ok++; }
+      else{ d.style.background='#fde8e8'; d.style.borderColor='#c0392b'; wrong.push(d.dataset.word); }
+    });
+  });
+  const fb=document.getElementById('ed-sfb'+r);
+  fb.style.display='block';
+  if(tot===0){ fb.className='sfb part'; fb.textContent='Place some verbs first!'; return; }
+  if(ok===10&&tot===10){ fb.className='sfb ok'; fb.textContent='Perfect! All 10 verbs correctly sorted.'; }
+  else{ fb.className='sfb part'; fb.textContent=ok+'/'+tot+' correct. Review: '+wrong.join(', ')+'.'; }
+}
+
+function edResetRound(r){
+  ['t','d','id'].forEach(z=>{ document.getElementById('ed-z'+r+z).innerHTML=''; });
+  document.querySelectorAll('#ed-bank'+r+' .chip').forEach(c=>c.classList.remove('placed','sel'));
+  edSel=null; edSelRound=null;
+  const fb=document.getElementById('ed-sfb'+r); if(fb) fb.style.display='none';
+}
+
+edBuildBanks();
+edSetupDropZones();
+
+
+
+/* ===== Session 3 sub-tabs ===== */
+function showS3(id,btn){
+  document.querySelectorAll('#c3 .s3-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('#c3 .s3-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ===== Rehab Phrasal Verbs ===== */
+const RV_KEY = {"rv1": "b", "rv2": "a", "rv3": "b", "rv4": "b", "rv5": "a", "rv6": "b", "rv7": "a", "rv8": "b", "rv9": "a", "rv10": "b"};
+const RV_ANS = "<strong>Check in</strong>: To monitor a player&#x27;s progress regularly &bull; <strong>Build up</strong>: To gradually increase fitness or intensity &bull; <strong>Burn out</strong>: To become exhausted from overtraining &bull; <strong>Cut back</strong>: To reduce training intensity during recovery &bull; <strong>Carry out</strong>: To perform a medical test or assessment &bull; <strong>Rule out</strong>: To exclude a player from playing (e.g., due to injury) &bull; <strong>Pull out</strong>: To withdraw a player from a match or squad &bull; <strong>Draw up</strong>: To create a training or recovery plan &bull; <strong>Break down</strong>: To analyze movement or data in detail &bull; <strong>Drop off</strong>: To experience a decline in performance or fitness";
+function rvCheck(){
+  let ok=0,tot=0;
+  for(const id in RV_KEY){
+    const sel=document.getElementById(id); tot++;
+    if(sel.value===''){ sel.style.background=''; sel.style.borderColor='#cbd5e1'; }
+    else if(sel.value===RV_KEY[id]){ sel.style.background='#d4edda'; sel.style.borderColor='#6b8f71'; ok++; }
+    else{ sel.style.background='#fde8e8'; sel.style.borderColor='#c0392b'; }
+  }
+  const fb=document.getElementById('rv-sfb'); fb.style.display='block';
+  fb.className = ok===tot ? 'sfb ok' : 'sfb part';
+  fb.textContent = 'Rehab Phrasal Verbs: '+ok+' / '+tot+' correct.';
+}
+function rvToggle(){
+  const el=document.getElementById('rv-key');
+  if(!el.innerHTML.trim()) el.innerHTML='<strong>Answers:</strong><br>'+RV_ANS;
+  el.style.display = el.style.display==='block' ? 'none' : 'block';
+}
+
+/* ===== Player Rehab Log ===== */
+const RL_KEY = {"rl1": "b", "rl2": "a", "rl3": "b", "rl4": "a", "rl5": "b", "rl6": "b", "rl7": "a", "rl8": "b"};
+const RL_ANS = "<strong>Bukayo Saka</strong>: draw up / build up<br><strong>Martin Ødegaard</strong>: cut back / check in<br><strong>Ben White</strong>: carry out / rule out<br><strong>Kai Havertz</strong>: build up / build up<br><strong>Gabriel Magalhães</strong>: cut back / burning out<br><strong>Julián Álvarez</strong>: drop off / break down<br><strong>Declan Rice</strong>: drop off / break down<br><strong>Mikel Merino</strong>: set up / cool down";
+function logCheck(){
+  let ok=0,tot=0;
+  for(const id in RL_KEY){
+    const sel=document.getElementById(id); tot++;
+    if(sel.value===''){ sel.style.background=''; sel.style.borderColor='#cbd5e1'; }
+    else if(sel.value===RL_KEY[id]){ sel.style.background='#d4edda'; sel.style.borderColor='#6b8f71'; ok++; }
+    else{ sel.style.background='#fde8e8'; sel.style.borderColor='#c0392b'; }
+  }
+  const fb=document.getElementById('rl-sfb'); fb.style.display='block';
+  fb.className = ok===tot ? 'sfb ok' : 'sfb part';
+  fb.textContent = 'Player Rehab Log: '+ok+' / '+tot+' correct.';
+}
+function logToggle(){
+  const el=document.getElementById('rl-key');
+  if(!el.innerHTML.trim()) el.innerHTML='<strong>Answers:</strong><br>'+RL_ANS;
+  el.style.display = el.style.display==='block' ? 'none' : 'block';
+}
+
+
+/* ===== Try Again — shuffle only wrong options, keep correct in place ===== */
+function shuffleWrongOpts(selId, correctVal){
+  const sel = document.getElementById(selId);
+  // shuffle ALL real options (placeholder stays first)
+  const opts = [...sel.options].filter(o => o.value !== '');
+  for(let i = opts.length-1; i > 0; i--){
+    const j = Math.floor(Math.random()*(i+1));
+    const tmpText = opts[i].text, tmpVal = opts[i].value;
+    opts[i].text = opts[j].text; opts[i].value = opts[j].value;
+    opts[j].text = tmpText;      opts[j].value = tmpVal;
+  }
+  sel.value = '';
+  sel.style.background = ''; sel.style.borderColor = '#cbd5e1';
+}
+
+function rvTryAgain(){
+  let reset = 0;
+  for(const id in RV_KEY){
+    const sel = document.getElementById(id);
+    if(sel.value !== RV_KEY[id]){ shuffleWrongOpts(id, RV_KEY[id]); reset++; }
+  }
+  const fb = document.getElementById('rv-sfb');
+  if(reset > 0){ fb.style.display='block'; fb.className='sfb part'; fb.textContent=reset+' question'+(reset>1?'s':'')+' reset — wrong options reshuffled. Try again!'; }
+  else { fb.style.display='block'; fb.className='sfb ok'; fb.textContent='All answers correct — nothing to reset!'; }
+  document.getElementById('rv-key').style.display='none';
+}
+
+function logTryAgain(){
+  let reset = 0;
+  for(const id in RL_KEY){
+    const sel = document.getElementById(id);
+    if(sel.value !== RL_KEY[id]){ shuffleWrongOpts(id, RL_KEY[id]); reset++; }
+  }
+  const fb = document.getElementById('rl-sfb');
+  if(reset > 0){ fb.style.display='block'; fb.className='sfb part'; fb.textContent=reset+' question'+(reset>1?'s':'')+' reset — wrong options reshuffled. Try again!'; }
+  else { fb.style.display='block'; fb.className='sfb ok'; fb.textContent='All answers correct — nothing to reset!'; }
+  document.getElementById('rl-key').style.display='none';
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>
