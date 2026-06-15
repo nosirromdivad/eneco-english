@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Eneco's English Practice ⚽</title>
+<title>Eneko's English Practice ⚽</title>
 
 <style>
 
@@ -376,17 +376,63 @@
 #c4 .spk-d{font-weight:800;color:#9B0000;}
 #c4 .spk-j{font-weight:800;color:#1d6fb8;}
 @media(min-width:760px){#c4 .s4-wrap{grid-template-columns:minmax(320px,1fr) 1.1fr;align-items:start;}}
+
+/* ===== Session 5 — Eze's London ===== */
+#c5 .s5-wrap{display:grid;grid-template-columns:1fr;gap:18px;}
+#c5 .s5-video{position:sticky;top:10px;z-index:5;background:#000;border-radius:14px;overflow:hidden;}
+#c5 .s5-video .ratio{position:relative;padding-bottom:56.25%;height:0;}
+#c5 .s5-video .ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+#c5 .s5-transcript{max-height:520px;overflow-y:auto;border:1px solid #dde3ec;border-radius:12px;padding:18px 20px;background:#fafcff;line-height:1.75;font-size:15px;}
+#c5 .s5-transcript p{margin:0 0 10px;padding:6px 10px;border-radius:6px;transition:background .3s;}
+#c5 .s5-transcript p.active-line{background:#fff3cd;font-weight:600;}
+#c5 .s5-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+#c5 .s5-tab{padding:7px 16px;border-radius:20px;border:2px solid #1d6fb8;background:#fff;color:#1d6fb8;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s,color .2s;}
+#c5 .s5-tab.active{background:#1d6fb8;color:#fff;}
+#c5 .s5-panel{display:none;}
+#c5 .s5-panel.active{display:block;}
+
+/* Formation drag-drop */
+#c5 .pitch-wrap{display:flex;flex-direction:column;gap:22px;align-items:center;}
+#c5 .pitch{position:relative;width:100%;max-width:420px;aspect-ratio:0.68;background:linear-gradient(180deg,#2d8a3e 0%,#3aaf54 100%);border-radius:12px;border:3px solid #fff;overflow:hidden;margin:0 auto;}
+#c5 .pitch::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:rgba(255,255,255,.35);transform:translateX(-50%);}
+#c5 .pitch::after{content:'';position:absolute;left:50%;top:50%;width:80px;height:80px;border:2px solid rgba(255,255,255,.35);border-radius:50%;transform:translate(-50%,-50%);}
+#c5 .player-spot{position:absolute;width:54px;height:54px;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.15);border:2px dashed rgba(255,255,255,.5);transition:background .2s,border-color .2s;cursor:default;}
+#c5 .player-spot.over{background:rgba(255,255,255,.35);border-color:#fff;}
+#c5 .player-spot.correct{background:rgba(40,200,80,.5);border:2px solid #a0ffb0;}
+#c5 .player-spot.wrong{background:rgba(220,50,50,.45);border:2px solid #ffaaaa;}
+#c5 .player-spot .jersey{font-size:22px;line-height:1;}
+#c5 .player-spot .drop-label{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:10px;color:rgba(255,255,255,.8);white-space:nowrap;text-align:center;pointer-events:none;}
+#c5 .pos-chip{display:inline-block;padding:5px 11px;border-radius:20px;background:#1d6fb8;color:#fff;font-size:13px;font-weight:600;cursor:grab;user-select:none;margin:4px;transition:opacity .2s,transform .2s;}
+#c5 .pos-chip:active{cursor:grabbing;opacity:.7;transform:scale(.95);}
+#c5 .pos-chip.used{opacity:.3;cursor:default;pointer-events:none;}
+#c5 .chips-bank{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:14px;background:#f0f4fa;border-radius:12px;min-height:58px;}
+#c5 .formation-score{font-size:15px;font-weight:700;color:#1d6fb8;text-align:center;margin-top:10px;}
+#c5 .btn-check-form{margin:8px auto;display:block;padding:9px 26px;background:#1d6fb8;color:#fff;border:none;border-radius:22px;font-size:15px;font-weight:700;cursor:pointer;}
+#c5 .btn-reset-form{margin:4px auto;display:block;padding:7px 22px;background:#fff;color:#1d6fb8;border:2px solid #1d6fb8;border-radius:22px;font-size:14px;font-weight:600;cursor:pointer;}
+#c5 .alt-names{font-size:11px;opacity:.75;display:block;text-align:center;}
+
+/* PDF section */
+#c5 .pdf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:16px;}
+#c5 .pdf-card{background:#fff;border:2px solid #dde3ec;border-radius:14px;padding:20px;text-align:center;transition:border-color .2s,box-shadow .2s;}
+#c5 .pdf-card:hover{border-color:#1d6fb8;box-shadow:0 4px 14px rgba(29,111,184,.12);}
+#c5 .pdf-card .pdf-icon{font-size:38px;margin-bottom:10px;}
+#c5 .pdf-card h3{font-size:15px;margin:0 0 8px;color:#1d6fb8;}
+#c5 .pdf-card p{font-size:13px;color:#666;margin:0 0 14px;}
+#c5 .pdf-card a{display:inline-block;padding:7px 18px;background:#1d6fb8;color:#fff;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;opacity:.5;pointer-events:none;}
+@media(min-width:760px){#c5 .s5-wrap{grid-template-columns:minmax(320px,1fr) 1.1fr;align-items:start;}}
+
 </style>
 
 </head>
 
 <body>
+<script src="https://www.youtube.com/iframe_api"></script>
 
 
 
 <header>
 
-  <h1>⚽ Eneco's English Practice</h1>
+  <h1>⚽ Eneko's English Practice</h1>
 
 
   <div class="class-switcher">
@@ -398,6 +444,7 @@
     <button class="class-btn" onclick="switchClass('c3',this)">Session 3</button>
 
     <button class="class-btn" onclick="switchClass('c4',this)">Session 4</button>
+    <button class="class-btn" onclick="switchClass('c5',this)">Session 5</button>
 
   </div>
 
@@ -952,7 +999,214 @@
       <div class="s4-line"><span class="spk-j">JUDE:</span> Last item for me is the Uno cards. It's not always necessarily Uno that I'm playing. We have a couple games at Dortmund that we like. One's called Liar, the other one's called Wolf, and there's another one, Brain or something, where you've got to wait till the person says the numbering order on these cards. Thorgan Hazard is the best at all these games. So I just spend hours in hotels trying to beat him. Some of the stuff I hear from England games gets a bit too much for me. So I don't really play here too much, but at Dortmund, yeah.</div>
     </div>
   </div>
+
+
+
 </div>
+
+<div class="class-panel" id="c5">
+
+  <div class="s5-tabs">
+    <button class="s5-tab active" onclick="s5Switch('watch',this)">📺 Watch &amp; Read</button>
+    <button class="s5-tab" onclick="s5Switch('formation',this)">⚽ Formation</button>
+    <button class="s5-tab" onclick="s5Switch('menus',this)">🍽️ Menus</button>
+  </div>
+
+  <!-- PANEL 1: Watch & Read -->
+  <div class="s5-panel active" id="s5-watch">
+    <div class="s5-wrap">
+      <div class="s5-video">
+        <div class="ratio">
+          <iframe id="s5yt" src="https://www.youtube.com/embed/Uw47k1F-gtQ?enablejsapi=1&rel=0"
+            title="Eze's London" allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+          </iframe>
+        </div>
+      </div>
+      <div class="s5-transcript" id="s5transcript">
+      <p data-t="0" id="tl0">Let's see what we're saying.</p>
+      <p data-t="3" id="tl1">That wasn't supposed to happen, was it?</p>
+      <p data-t="6" id="tl2">My name is Ezra Chzza and this is London.</p>
+      <p data-t="9" id="tl3">From quality time with fans up north.</p>
+      <p data-t="12" id="tl4">Good luck to you.</p>
+      <p data-t="14" id="tl5">I'm excited, man.</p>
+      <p data-t="16" id="tl6">All my roots in the south, this city has always felt like home.</p>
+      <p data-t="20" id="tl7">Hey, this is crazy, bro.</p>
+      <p data-t="23" id="tl8">And this is my off day. So, let's get to it.</p>
+      <p data-t="27" id="tl9">North London is so different to where I'm from in the South.</p>
+      <p data-t="32" id="tl10">I think home for me right now isn't a place.</p>
+      <p data-t="36" id="tl11">It's more the feeling I get when I'm with certain people, people that I've grown up with.</p>
+      <p data-t="41" id="tl12">That's literally who the people that are around me now.</p>
+      <p data-t="45" id="tl13">Yeah, a couple of my boys who we might see today, I hope.</p>
+      <p data-t="49" id="tl14">In London, there's so much to do.</p>
+      <p data-t="52" id="tl15">Dream day, just try to do like random stuff.</p>
+      <p data-t="55" id="tl16">Go and do another activity with my missus outside, like something creative, something a bit different.</p>
+      <p data-t="61" id="tl17">I try to actually just let myself just whatever I feel like doing on the day, do that.</p>
+      <p data-t="67" id="tl18">Okay, we're kicking things off with a London classic, salt beef on a bagel.</p>
+      <p data-t="72" id="tl19">So, we're going to a Delhi House in Barnet. It's quite popular.</p>
+      <p data-t="77" id="tl20">Let's see what they have for us, though.</p>
+      <p data-t="80" id="tl21">Delhi House is my go-to spot in the north.</p>
+      <p data-t="84" id="tl22">It's a small spot with big dreams for sure.</p>
+      <p data-t="87" id="tl23">Slippery one though…</p>
+      <p data-t="89" id="tl24">That wasn't supposed to happen, was it?</p>
+      <p data-t="92" id="tl25">Okay, wait. This is dangerous. I can tell.</p>
+      <p data-t="96" id="tl26">I won't lie. That mustard stuff. Hey yo, for me that mustard. Oh my days. It's like sweet.</p>
+      <p data-t="103" id="tl27">For me, these are the best types of places.</p>
+      <p data-t="107" id="tl28">You know where we at. Early house.</p>
+      <p data-t="110" id="tl29">My little sandwich with the team as well.</p>
+      <p data-t="113" id="tl30">Pie and mash or fish and chips? — Fish and chips.</p>
+      <p data-t="116" id="tl31">Sunday roast or full English? — Sunday roast.</p>
+      <p data-t="119" id="tl32">Bagel or bacon sarnie? — Bagel.</p>
+      <p data-t="122" id="tl33">Sit down or take away? — Sit down.</p>
+      <p data-t="125" id="tl34">Family run or chain? — Family run, brother, always.</p>
+      <p data-t="128" id="tl35">Late night kebab or no late night kebab? — No late night kebab, please. I make some bad decisions if I go out.</p>
+      <p data-t="134" id="tl36">All right. So beef on a bagel at Delhi House is legit London. And so is fish and chips.</p>
+      <p data-t="140" id="tl37">Ollie's gets the details right. Fresh fish, hot chips. Locals know the guy by name. Plus it's near the stadium. Easy commute for me.</p>
+      <p data-t="148" id="tl38">We are in North London, near King's Cross. Our fish is always fresh and also we look after our customers.</p>
+      <p data-t="154" id="tl39">Ollie's fish and chips is absolutely like top quality. The chips are like really fluffy and soft in the middle, crispy on the outside.</p>
+      <p data-t="162" id="tl40">That's what you want from a chip. You want crispy on the outside, soft in the middle.</p>
+      <p data-t="167" id="tl41">This was my dream, having a shop. As soon as I walk in, I feel like I'm in my second house.</p>
+      <p data-t="172" id="tl42">Our motto is come as a guest, leave as a friend.</p>
+      <p data-t="175" id="tl43">Good luck to you. Hope it goes off.</p>
+      <p data-t="178" id="tl44">Thank you so much, man.</p>
+      <p data-t="181" id="tl45">I don't travel with a lot — very light wherever we go.</p>
+      <p data-t="185" id="tl46">What are the essentials? Kindle, iPad, Bible, charger, toothbrush, a change of clothes. That's it.</p>
+      <p data-t="191" id="tl47">Speaking of clothes, London is full of great shops. Selfridges is legendary.</p>
+      <p data-t="196" id="tl48">But the new thing, Dover Street Market.</p>
+      <p data-t="199" id="tl49">I think Dover Street Market is the coolest fashion space in London. They really redefined what fashion retail is.</p>
+      <p data-t="205" id="tl50">I love the fact that you can go there, you can get pretty much every cool brand that you want in one space.</p>
+      <p data-t="211" id="tl51">More than ever, sport and fashion are shaping each other in real time. In a way, they're connected.</p>
+      <p data-t="217" id="tl52">So on our way to a coffee shop, Brass Monkey.</p>
+      <p data-t="221" id="tl53">If I'm honest, this is actually one of my missus's spots. She's a bit of a coffee head.</p>
+      <p data-t="226" id="tl54">I just like warm drinks. It's not about the coffee. I'll be real, man.</p>
+      <p data-t="231" id="tl55">Look, for me, my off days are best spent with my family and friends. And this one, he's both.</p>
+      <p data-t="236" id="tl56">Me and my brother Ikechi. I'm just gonna speak to my brother for the first time in a while rather than kill him at chess.</p>
+      <p data-t="243" id="tl57">We're competitive about pretty much everything and chess is definitely one of them.</p>
+      <p data-t="247" id="tl58">We're in Radlett, which is Hertfordshire, about 25 minutes outside of London.</p>
+      <p data-t="252" id="tl59">It's named after a Beastie Boys track from their first album Licensed to Ill, Brass Monkey.</p>
+      <p data-t="258" id="tl60">It was just born with wanting to bring the London coffee shop vibe to a local area.</p>
+      <p data-t="263" id="tl61">Love a good hot drink. We both go with vanilla oatmeal lattes.</p>
+      <p data-t="267" id="tl62">Then go for something like a smashed monkey — smashed avocado on sourdough with fresh feta and chilli flakes on top.</p>
+      <p data-t="273" id="tl63">And people like to treat it like their home. So they do everything from puzzles to art to backgammon to chess.</p>
+      <p data-t="279" id="tl64">Okay, time to lock in. Can't lose focus once the game starts. This is serious stuff, man.</p>
+      <p data-t="284" id="tl65">Chess takes instinct. It takes fast thinking, finding solutions to problems quickly.</p>
+      <p data-t="289" id="tl66">I started to think of what piece I might be. I think I'm a knight.</p>
+      <p data-t="294" id="tl67">Just the way he moves, he just hopping and jumping and moving in different directions.</p>
+      <p data-t="299" id="tl68">I think that's all she wrote. It is all she wrote.</p>
+      <p data-t="302" id="tl69">It was a good match, but you know who won this time.</p>
+      <p data-t="306" id="tl70">Good sportsmanship always in all things. Even chess. Good game.</p>
+      <p data-t="311" id="tl71">Chess is the thing in London. Even if you're in Brick Lane — this is Cafe 1001.</p>
+      <p data-t="316" id="tl72">We're in the heart of Shoreditch, straight on Brick Lane. We've been doing chess for a bit more than a year now. It became super trendy in London.</p>
+      <p data-t="324" id="tl73">Come here, grab a drink, listen to some live music and play chess.</p>
+      <p data-t="328" id="tl74">I can't seem to stay away from competition even on my off day. Up next, bowling.</p>
+      <p data-t="333" id="tl75">So, we are going bowling. It should be very competitive. I'm actually excited to see my boys, man.</p>
+      <p data-t="339" id="tl76">Anyone who grew up in London knows Hollywood Bowl. It's part of your childhood — with your family, your boys. That's the whole vibe.</p>
+      <p data-t="346" id="tl77">But all these guys, I've known them since I was like 11.</p>
+      <p data-t="349" id="tl78">We've grown up together. We've seen each other from when we were little babies running around.</p>
+      <p data-t="354" id="tl79">So it's a deeper connection — not based on anything else other than the love that you've had for each other from young.</p>
+      <p data-t="360" id="tl80">Even if it is just for fun, you play to win. It's in my DNA.</p>
+      <p data-t="364" id="tl81">That's a strike.</p>
+      <p data-t="366" id="tl82">I'm the last guy they want to see win this game.</p>
+      <p data-t="369" id="tl83">We don't get to do it often, but when we do, it's like that all the time. That energy.</p>
+      <p data-t="374" id="tl84">The best thing about football is being on the pitch and having the ball, scoring a goal, being in the position to try to create.</p>
+      <p data-t="380" id="tl85">Because when you grow up in London, football is one of the first things you're exposed to.</p>
+      <p data-t="384" id="tl86">The passion that is behind it — from parents, from grandparents, from friends, the rivalries in your schools — it grows with you.</p>
+      <p data-t="390" id="tl87">I think Arsenal is a way of life. It's always been a classic club and it represents values that I've been brought up with.</p>
+      <p data-t="396" id="tl88">It's deep rooted in tradition. That's what it means. It's almost like a cult.</p>
+      <p data-t="401" id="tl89">It's in your blood. I'm a North London girl. My dad and all the family were Arsenal and I couldn't support anybody else.</p>
+      <p data-t="407" id="tl90">Can you hear them crying down the lane? Eberichi scores again. Arsenal. Arsenal. Arsenal.</p>
+      <p data-t="412" id="tl91">Family, friends, full off day, full of love. Now, let's eat.</p>
+      <p data-t="416" id="tl92">When it comes to going out with my boys, Skewd is my spot. Quality time with your loved ones over an amazing meal.</p>
+      <p data-t="422" id="tl93">My people are there. Nice vibe in the restaurant, good music, good food.</p>
+      <p data-t="427" id="tl94">Yeah, that's enough, man. I'm a simple guy. Very simple guy.</p>
+      <p data-t="431" id="tl95">So this is Chuma, my little brother. Jordan, like my older brother. Sam, another older brother. Mark and Dejon, my best friends. And Ikechi, my bloody brother and fellow rival.</p>
+      <p data-t="438" id="tl96">Now is the time. No more playing. Let's eat.</p>
+      <p data-t="441" id="tl97">Help us to enjoy this meal. In Jesus' mighty name we pray. Amen.</p>
+      <p data-t="445" id="tl98">The food is here. And Skewd brings it. Fire and smoke all day. Cooking over the charcoal. Scallops, dips, chicken, lamb. Going crazy.</p>
+      <p data-t="451" id="tl99">It's good, man. This is high quality stuff. Lamb is kind of insane still.</p>
+      <p data-t="456" id="tl100">It's all about the charcoal cooking. You're using nature and cooking nature. When you combine the two in an elevated fashion, it's really really nice.</p>
+      <p data-t="463" id="tl101">Turkish food — I think the core of what makes Turkish food so special is hospitality. It's the culture.</p>
+      <p data-t="468" id="tl102">We love having Eze around. He's a lovely person. He gets on with all our staff. He's a joy to host.</p>
+      <p data-t="474" id="tl103">I love food too much. That's my issue.</p>
+      <p data-t="477" id="tl104">Kebab — Solid. Skewers — Solid. Pasta — Elite. Pizza — Elite. Jerk chicken — Elite. Fish and chips — Elite.</p>
+      <p data-t="484" id="tl105">I'm saying a lot of elites here.</p>
+      <p data-t="486" id="tl106">Full English is strong. Curry — Strong. Sushi — Strong.</p>
+      <p data-t="490" id="tl107">Suya — Elite. Cereal at night — Elite. Late night fast food — Cut. I need to be professional, man.</p>
+      <p data-t="496" id="tl108">Jollof — Elite. One and only. Jollof. Legendary stuff.</p>
+      <p data-t="500" id="tl109">Whether you're in South London or up north, this city don't stop. There's always something going on.</p>
+      <p data-t="506" id="tl110">Whether it's playing chess over a coffee, family style dinners or throwing strikes with your boys.</p>
+      <p data-t="511" id="tl111">And through all of it, never forgetting where you come from. That's the beauty of London to me.</p>
+      <p data-t="517" id="tl112">No matter what part of town I'm in or wherever life takes me, this will always be home.</p>
+      <p data-t="522" id="tl113">I appreciate you spending my off day with me. What a blast!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 2: Formation drag-drop -->
+  <div class="s5-panel" id="s5-formation">
+    <h2 style="text-align:center;margin-bottom:4px;">⚽ 4-4-2 Formation</h2>
+    <p style="text-align:center;font-size:14px;color:#555;margin-bottom:14px;">Drag each position label onto the correct player on the pitch.</p>
+    <div class="pitch-wrap">
+      <div class="chips-bank" id="fmBank">
+      <div class="pos-chip" id="chip7" draggable="true" data-pos="Left Central Midfielder" ondragstart="fmDragStart(event,7)">Left Central Midfielder<span class="alt-names">Left Half</span></div>
+      <div class="pos-chip" id="chip3" draggable="true" data-pos="Left Centre-Back" ondragstart="fmDragStart(event,3)">Left Centre-Back<span class="alt-names">Left Centre-Half</span></div>
+      <div class="pos-chip" id="chip2" draggable="true" data-pos="Right Centre-Back" ondragstart="fmDragStart(event,2)">Right Centre-Back<span class="alt-names">Right Centre-Half</span></div>
+      <div class="pos-chip" id="chip8" draggable="true" data-pos="Left Midfielder" ondragstart="fmDragStart(event,8)">Left Midfielder<span class="alt-names">Left Winger / Left Wide Midfielder</span></div>
+      <div class="pos-chip" id="chip5" draggable="true" data-pos="Right Midfielder" ondragstart="fmDragStart(event,5)">Right Midfielder<span class="alt-names">Right Winger / Right Wide Midfielder</span></div>
+      <div class="pos-chip" id="chip6" draggable="true" data-pos="Right Central Midfielder" ondragstart="fmDragStart(event,6)">Right Central Midfielder<span class="alt-names">Right Half</span></div>
+      <div class="pos-chip" id="chip9" draggable="true" data-pos="Right Striker" ondragstart="fmDragStart(event,9)">Right Striker<span class="alt-names">Right Forward / Inside Right</span></div>
+      <div class="pos-chip" id="chip4" draggable="true" data-pos="Left Back" ondragstart="fmDragStart(event,4)">Left Back<span class="alt-names">Left Fullback</span></div>
+      <div class="pos-chip" id="chip0" draggable="true" data-pos="Goalkeeper" ondragstart="fmDragStart(event,0)">Goalkeeper<span class="alt-names">Keeper / Goalie</span></div>
+      <div class="pos-chip" id="chip1" draggable="true" data-pos="Right Back" ondragstart="fmDragStart(event,1)">Right Back<span class="alt-names">Right Fullback</span></div>
+      <div class="pos-chip" id="chip10" draggable="true" data-pos="Left Striker" ondragstart="fmDragStart(event,10)">Left Striker<span class="alt-names">Left Forward / Inside Left</span></div>
+      </div>
+      <div class="pitch" id="fmPitch">
+      <div class="player-spot" id="spot0" data-pos="Goalkeeper" style="left:50%;top:92%;" ondragover="fmDragOver(event)" ondrop="fmDrop(event,0)"><span class="jersey">👕</span><span class="drop-label">1</span></div>
+      <div class="player-spot" id="spot1" data-pos="Right Back" style="left:82%;top:76%;" ondragover="fmDragOver(event)" ondrop="fmDrop(event,1)"><span class="jersey">👕</span><span class="drop-label">2</span></div>
+      <div class="player-spot" id="spot2" data-pos="Right Centre-Back" style="left:63%;top:76%;" ondragover="fmDragOver(event)" ondrop="fmDrop(event,2)"><span class="jersey">👕</span><span class="drop-label">3</span></div>
+      <div class="player-spot" id="spot3" data-pos="Left Centre-Back" style="left:37%;top:76%;" ondragover="fmDragOver(event)" ondrop="fmDrop(event,3)"><span class="jersey">👕</span><span class="drop-label">4</span></div>
+      <div class="player-spot" id="spot4" data-pos="Left Back" style="left:18%;top:76%;" ondragover="fmDragOver(event)" ondrop="fmDrop(event,4)"><span class="jersey">👕</span><span class="drop-label">5</span></div>
+      <div class="player-spot" id="spot5" data-pos="Right Midfielder" style="left:82%;top:52%;" ondragover="fmDragOver(event)" ondrop="fmDrop(event,5)"><span class="jersey">👕</span><span class="drop-label">6</span></div>
+      <div class="player-spot" id="spot6" data-pos="Right Central Midfielder" style="left:63%;top:52%;" ondragover="fmDragOver(event)" ondrop="fmDrop(event,6)"><span class="jersey">👕</span><span class="drop-label">7</span></div>
+      <div class="player-spot" id="spot7" data-pos="Left Central Midfielder" style="left:37%;top:52%;" ondragover="fmDragOver(event)" ondrop="fmDrop(event,7)"><span class="jersey">👕</span><span class="drop-label">8</span></div>
+      <div class="player-spot" id="spot8" data-pos="Left Midfielder" style="left:18%;top:52%;" ondragover="fmDragOver(event)" ondrop="fmDrop(event,8)"><span class="jersey">👕</span><span class="drop-label">9</span></div>
+      <div class="player-spot" id="spot9" data-pos="Right Striker" style="left:65%;top:22%;" ondragover="fmDragOver(event)" ondrop="fmDrop(event,9)"><span class="jersey">👕</span><span class="drop-label">10</span></div>
+      <div class="player-spot" id="spot10" data-pos="Left Striker" style="left:35%;top:22%;" ondragover="fmDragOver(event)" ondrop="fmDrop(event,10)"><span class="jersey">👕</span><span class="drop-label">11</span></div>
+      </div>
+      <div class="formation-score" id="fmScore"></div>
+      <button class="btn-check-form" onclick="fmCheck()">✔ Check</button>
+      <button class="btn-reset-form" onclick="fmReset()">↻ Reset</button>
+    </div>
+  </div>
+
+  <!-- PANEL 3: Menus -->
+  <div class="s5-panel" id="s5-menus">
+    <h2 style="text-align:center;margin-bottom:8px;">🍽️ Restaurant Menus</h2>
+    <p style="text-align:center;font-size:14px;color:#555;margin-bottom:4px;">Menus from the restaurants Eze visited on his day off.</p>
+    <div class="pdf-grid">
+      <div class="pdf-card">
+        <div class="pdf-icon">📄</div>
+        <h3>Menu 1</h3>
+        <p>Coming soon</p>
+        <a href="pdfs/menu1.pdf" target="_blank">Open Menu</a>
+      </div>
+      <div class="pdf-card">
+        <div class="pdf-icon">📄</div>
+        <h3>Menu 2</h3>
+        <p>Coming soon</p>
+        <a href="pdfs/menu2.pdf" target="_blank">Open Menu</a>
+      </div>
+      <div class="pdf-card">
+        <div class="pdf-icon">📄</div>
+        <h3>Menu 3</h3>
+        <p>Coming soon</p>
+        <a href="pdfs/menu3.pdf" target="_blank">Open Menu</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 </div><footer>
 
   Progress is saved on this device. <span class="reset-all" onclick="resetAll()">Clear everything</span>
@@ -1138,7 +1392,7 @@ const data = {
 
   p3: [
 
-    { sentence:"Before the trip, Eneco and his wife decided it was finally the right time to ____ the baby off breast milk and start introducing solid foods.",
+    { sentence:"Before the trip, Eneko and his wife decided it was finally the right time to ____ the baby off breast milk and start introducing solid foods.",
 
       answers:["wean"], hint:"Verb after <em>to</em> — means to stop feeding milk.", model:"wean" },
 
@@ -1396,7 +1650,7 @@ const data = {
 
   p8: [
 
-    { sentence:"The midwife suggested Eneco buy a ____ so his wife could express milk and store it for night feeds.",
+    { sentence:"The midwife suggested Eneko buy a ____ so his wife could express milk and store it for night feeds.",
 
       answers:["breast pump"], hint:"A device that extracts milk from the breast.", model:"breast pump" },
 
@@ -1408,7 +1662,7 @@ const data = {
 
       answers:["nappy cream"], hint:"A thick cream that prevents and soothes nappy rash.", model:"nappy cream" },
 
-    { sentence:"Eneco checked the baby's temperature using the digital ____ — thankfully it was completely normal.",
+    { sentence:"Eneko checked the baby's temperature using the digital ____ — thankfully it was completely normal.",
 
       answers:["thermometer"], hint:"You use this to measure body temperature.", model:"thermometer" },
 
@@ -1484,7 +1738,7 @@ const data = {
 
   p10: [
 
-    { sentence:"Eneco has been a physiotherapist ____ twelve years.",
+    { sentence:"Eneko has been a physiotherapist ____ twelve years.",
 
       answers:["for"], hint:"Twelve years is a <strong>duration</strong> → use <strong>for</strong>.", model:"for" },
 
@@ -1516,7 +1770,7 @@ const data = {
 
       answers:["for"], hint:"Two weeks is a <strong>duration</strong> → use <strong>for</strong>.", model:"for" },
 
-    { sentence:"Eneco has been at Arsenal ____ last summer.",
+    { sentence:"Eneko has been at Arsenal ____ last summer.",
 
       answers:["since"], hint:"<em>Last summer</em> is the starting point → use <strong>since</strong>.", model:"since" },
 
@@ -2440,6 +2694,142 @@ function checkGrammar() {
   });
   document.getElementById('grammar-score').textContent = correct + ' / 10';
 }
+
+
+
+
+/* ===== Session 5 JS ===== */
+function s5Switch(panel, btn) {
+  document.querySelectorAll('#c5 .s5-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#c5 .s5-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('s5-' + panel).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* --- Transcript sync via YouTube IFrame API --- */
+var s5Player = null;
+var s5Cues = [[0, 0], [3, 1], [6, 2], [9, 3], [12, 4], [14, 5], [16, 6], [20, 7], [23, 8], [27, 9], [32, 10], [36, 11], [41, 12], [45, 13], [49, 14], [52, 15], [55, 16], [61, 17], [67, 18], [72, 19], [77, 20], [80, 21], [84, 22], [87, 23], [89, 24], [92, 25], [96, 26], [103, 27], [107, 28], [110, 29], [113, 30], [116, 31], [119, 32], [122, 33], [125, 34], [128, 35], [134, 36], [140, 37], [148, 38], [154, 39], [162, 40], [167, 41], [172, 42], [175, 43], [178, 44], [181, 45], [185, 46], [191, 47], [196, 48], [199, 49], [205, 50], [211, 51], [217, 52], [221, 53], [226, 54], [231, 55], [236, 56], [243, 57], [247, 58], [252, 59], [258, 60], [263, 61], [267, 62], [273, 63], [279, 64], [284, 65], [289, 66], [294, 67], [299, 68], [302, 69], [306, 70], [311, 71], [316, 72], [324, 73], [328, 74], [333, 75], [339, 76], [346, 77], [349, 78], [354, 79], [360, 80], [364, 81], [366, 82], [369, 83], [374, 84], [380, 85], [384, 86], [390, 87], [396, 88], [401, 89], [407, 90], [412, 91], [416, 92], [422, 93], [427, 94], [431, 95], [438, 96], [441, 97], [445, 98], [451, 99], [456, 100], [463, 101], [468, 102], [474, 103], [477, 104], [484, 105], [486, 106], [490, 107], [496, 108], [500, 109], [506, 110], [511, 111], [517, 112], [522, 113]];
+var s5ActiveLine = -1;
+var s5Timer = null;
+
+function onYouTubeIframeAPIReady() {
+  s5Player = new YT.Player('s5yt', {
+    events: { onStateChange: s5StateChange }
+  });
+}
+
+function s5StateChange(e) {
+  if (e.data === YT.PlayerState.PLAYING) {
+    if (!s5Timer) s5Timer = setInterval(s5Tick, 500);
+  } else {
+    clearInterval(s5Timer); s5Timer = null;
+  }
+}
+
+function s5Tick() {
+  if (!s5Player) return;
+  var t = s5Player.getCurrentTime();
+  var idx = 0;
+  for (var i = 0; i < s5Cues.length; i++) {
+    if (t >= s5Cues[i][0]) idx = s5Cues[i][1];
+    else break;
+  }
+  if (idx !== s5ActiveLine) {
+    if (s5ActiveLine >= 0) {
+      var old = document.getElementById('tl' + s5ActiveLine);
+      if (old) old.classList.remove('active-line');
+    }
+    var el = document.getElementById('tl' + idx);
+    if (el) {
+      el.classList.add('active-line');
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    s5ActiveLine = idx;
+  }
+}
+
+/* --- Formation drag-drop --- */
+var fmCorrect = ["Goalkeeper", "Right Back", "Right Centre-Back", "Left Centre-Back", "Left Back", "Right Midfielder", "Right Central Midfielder", "Left Central Midfielder", "Left Midfielder", "Right Striker", "Left Striker"];
+var fmDropped = {};   // spotIndex -> chipIndex
+var fmDragging = null;
+
+function fmDragStart(e, chipIdx) {
+  fmDragging = chipIdx;
+  e.dataTransfer.effectAllowed = 'move';
+}
+
+function fmDragOver(e) {
+  e.preventDefault();
+  e.currentTarget.classList.add('over');
+}
+
+function fmDrop(e, spotIdx) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('over');
+  if (fmDragging === null) return;
+
+  // If this spot already has a chip, return it to bank
+  if (fmDropped[spotIdx] !== undefined) {
+    var old = fmDropped[spotIdx];
+    document.getElementById('chip' + old).classList.remove('used');
+    delete fmDropped[spotIdx];
+  }
+
+  // Remove chip from another spot if it was already placed
+  for (var s in fmDropped) {
+    if (fmDropped[s] === fmDragging) {
+      delete fmDropped[s];
+      document.getElementById('spot' + s).innerHTML =
+        '<span class="jersey">👕</span><span class="drop-label">' + (parseInt(s)+1) + '</span>';
+      document.getElementById('spot' + s).className = 'player-spot';
+    }
+  }
+
+  fmDropped[spotIdx] = fmDragging;
+  document.getElementById('chip' + fmDragging).classList.add('used');
+
+  var chip = document.getElementById('chip' + fmDragging);
+  var spot = document.getElementById('spot' + spotIdx);
+  spot.innerHTML = '<span style="font-size:11px;font-weight:700;color:#fff;text-align:center;padding:2px;">'
+    + chip.childNodes[0].textContent.trim() + '</span>';
+  spot.className = 'player-spot';
+  fmDragging = null;
+  document.getElementById('fmScore').textContent = '';
+}
+
+function fmCheck() {
+  var correct = 0;
+  for (var s = 0; s < 11; s++) {
+    var spot = document.getElementById('spot' + s);
+    if (fmDropped[s] !== undefined) {
+      var chip = document.getElementById('chip' + fmDropped[s]);
+      var placedName = chip.childNodes[0].textContent.trim();
+      if (placedName === fmCorrect[s]) {
+        spot.classList.add('correct'); spot.classList.remove('wrong'); correct++;
+      } else {
+        spot.classList.add('wrong'); spot.classList.remove('correct');
+      }
+    } else {
+      spot.classList.remove('correct','wrong');
+    }
+  }
+  document.getElementById('fmScore').textContent = correct + ' / 11 correct';
+}
+
+function fmReset() {
+  fmDropped = {};
+  fmDragging = null;
+  for (var s = 0; s < 11; s++) {
+    var spot = document.getElementById('spot' + s);
+    spot.className = 'player-spot';
+    spot.innerHTML = '<span class="jersey">👕</span><span class="drop-label">' + (s+1) + '</span>';
+  }
+  document.querySelectorAll('#c5 .pos-chip').forEach(function(c) {
+    c.classList.remove('used');
+  });
+  document.getElementById('fmScore').textContent = '';
+}
+
 
 
 </script>
