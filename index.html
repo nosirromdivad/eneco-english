@@ -1258,11 +1258,6 @@
 <div class="card">
       <h2 style="color:#9B0000;margin:0 0 6px;">&#x1FA79; Rehabilitation Scenarios</h2>
       <p class="lead">Read each player complaint. Choose the correct <strong>diagnosis</strong> and <strong>treatment technology</strong> from the three options given.</p>
-      <div class="toolbar" style="margin-bottom:14px;">
-        <button class="btn small" onclick="s7Check()">Check</button>
-        <button class="btn warn small" onclick="s7Reset()">&#x21BB; Reset</button>
-        <span class="score" id="s7-score">0 / 20</span>
-      </div>
       <div class="s7-row" id="s7r1">
         <div class="s7-num">Scenario 1</div>
         <div class="s7-complaint">Sharp pain in the back of the thigh during a sprint.</div>
@@ -1403,76 +1398,15 @@
           <option value="Virtual Reality (VR) Immersive Training">Virtual Reality (VR) Immersive Training</option><option value="BlazePod cognitive-motor training">BlazePod cognitive-motor training</option><option value="Robotic-assisted gait trainers">Robotic-assisted gait trainers</option>
         </select>
       </div>
+      <div class="toolbar" style="margin-top:18px;">
+        <button class="btn small" onclick="s7Check()">Check</button>
+        <button class="btn warn small" onclick="s7Reset()">&#x21BB; Reset</button>
+        <button class="btn ghost small" onclick="s7ShowAnswers()">See Answers</button>
+        <span class="score" id="s7-score">0 / 20</span>
+      </div>
       <div id="s7-sfb" class="sfb" style="margin-top:14px;"></div>
     </div>
 
-<div style="margin-top:24px;">
-<div class="card">
-      <h2 style="color:#9B0000;margin:0 0 6px;">&#x1F914; Expressing Uncertainty</h2>
-      <p class="lead">A physio asks a question. Complete the uncertain response by choosing the missing word.</p>
-
-      <details class="unc-ref">
-        <summary>&#x1F4D6; 20 ways to say &ldquo;I don&rsquo;t know&rdquo; &mdash; click to expand</summary>
-        <ol class="unc-list">
-          <li>I&rsquo;m not sure&hellip;</li>
-          <li>It&rsquo;s unclear to me&hellip;</li>
-          <li>I&rsquo;m puzzled about&hellip;</li>
-          <li>I have yet to find out&hellip;</li>
-          <li>I can&rsquo;t quite figure out&hellip;</li>
-          <li>I&rsquo;m in the dark about&hellip;</li>
-          <li>I&rsquo;m really not certain&hellip;</li>
-          <li>It&rsquo;s a mystery to me&hellip;</li>
-          <li>I can&rsquo;t seem to grasp&hellip;</li>
-          <li>I haven&rsquo;t the slightest idea&hellip;</li>
-          <li>I find it hard to understand&hellip;</li>
-          <li>I&rsquo;m struggling to pinpoint&hellip;</li>
-          <li>It&rsquo;s not clear to me&hellip;</li>
-          <li>I am at a loss as to&hellip;</li>
-          <li>I&rsquo;m wondering&hellip;</li>
-          <li>I haven&rsquo;t got a clue&hellip;</li>
-          <li>I&rsquo;m having trouble seeing&hellip;</li>
-          <li>I&rsquo;ve no idea&hellip;</li>
-          <li>I&rsquo;m not exactly sure&hellip;</li>
-          <li>It escapes me&hellip;</li>
-        </ol>
-      </details>
-
-      <h3 class="unc-round-hdr">Round 1</h3>
-
-      <div class="qrow" id="unc-row-1"><div class="qpv">Why did he break down?</div><div class="qu-phrase">I&rsquo;m not <select class="qu-sel" id="unc1" data-ans="sure"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="ready">ready</option><option value="sure">sure</option><option value="late">late</option></select> &hellip;</div></div>
-      <div class="qrow" id="unc-row-2"><div class="qpv">When should we check in?</div><div class="qu-phrase">It&rsquo;s <select class="qu-sel" id="unc2" data-ans="unclear"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="easy">easy</option><option value="obvious">obvious</option><option value="unclear">unclear</option></select> to me&hellip;</div></div>
-      <div class="qrow" id="unc-row-3"><div class="qpv">How do we build up his load?</div><div class="qu-phrase">I&rsquo;m <select class="qu-sel" id="unc3" data-ans="puzzled"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="certain">certain</option><option value="excited">excited</option><option value="puzzled">puzzled</option></select> about&hellip;</div></div>
-      <div class="qrow" id="unc-row-4"><div class="qpv">Who will draw up the plan?</div><div class="qu-phrase">I have <select class="qu-sel" id="unc4" data-ans="yet"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="already">already</option><option value="just">just</option><option value="yet">yet</option></select> to find out&hellip;</div></div>
-      <div class="qrow" id="unc-row-5"><div class="qpv">Why did she pull out?</div><div class="qu-phrase">I can&rsquo;t quite <select class="qu-sel" id="unc5" data-ans="figure"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="guess">guess</option><option value="think">think</option><option value="figure">figure</option></select> out&hellip;</div></div>
-      <div class="qrow" id="unc-row-6"><div class="qpv">How much should we cut back?</div><div class="qu-phrase">I&rsquo;m in the <select class="qu-sel" id="unc6" data-ans="dark"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="loop">loop</option><option value="know">know</option><option value="dark">dark</option></select> about&hellip;</div></div>
-      <div class="qrow" id="unc-row-7"><div class="qpv">Can we rule out a tear?</div><div class="qu-phrase">I&rsquo;m really not <select class="qu-sel" id="unc7" data-ans="certain"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="worried">worried</option><option value="aware">aware</option><option value="certain">certain</option></select> &hellip;</div></div>
-      <div class="qrow" id="unc-row-8"><div class="qpv">Where did you carry out the test?</div><div class="qu-phrase">It&rsquo;s a <select class="qu-sel" id="unc8" data-ans="mystery"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="surprise">surprise</option><option value="concern">concern</option><option value="mystery">mystery</option></select> to me&hellip;</div></div>
-      <div class="qrow" id="unc-row-9"><div class="qpv">Why did his fitness drop off?</div><div class="qu-phrase">I can&rsquo;t seem to <select class="qu-sel" id="unc9" data-ans="grasp"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="explain">explain</option><option value="predict">predict</option><option value="grasp">grasp</option></select> &hellip;</div></div>
-      <div class="qrow" id="unc-row-10"><div class="qpv">Who is going to check in with him?</div><div class="qu-phrase">I haven&rsquo;t the <select class="qu-sel" id="unc10" data-ans="slightest"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="greatest">greatest</option><option value="fullest">fullest</option><option value="slightest">slightest</option></select> idea&hellip;</div></div>
-
-      <h3 class="unc-round-hdr">Round 2</h3>
-
-      <div class="qrow" id="unc-row-11"><div class="qpv">Why did they cut back the intensity?</div><div class="qu-phrase">I find it <select class="qu-sel" id="unc11" data-ans="hard"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="easy">easy</option><option value="important">important</option><option value="hard">hard</option></select> to understand&hellip;</div></div>
-      <div class="qrow" id="unc-row-12"><div class="qpv">When did the player break down?</div><div class="qu-phrase">I&rsquo;m <select class="qu-sel" id="unc12" data-ans="struggling"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="trying">trying</option><option value="hoping">hoping</option><option value="struggling">struggling</option></select> to pinpoint&hellip;</div></div>
-      <div class="qrow" id="unc-row-13"><div class="qpv">How did you draw up this schedule?</div><div class="qu-phrase">It&rsquo;s not <select class="qu-sel" id="unc13" data-ans="clear"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="right">right</option><option value="finished">finished</option><option value="clear">clear</option></select> to me&hellip;</div></div>
-      <div class="qrow" id="unc-row-14"><div class="qpv">Why must we rule out contact drills?</div><div class="qu-phrase">I am at a <select class="qu-sel" id="unc14" data-ans="loss"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="gain">gain</option><option value="guess">guess</option><option value="loss">loss</option></select> as to&hellip;</div></div>
-      <div class="qrow" id="unc-row-15"><div class="qpv">Where did you carry out the assessment?</div><div class="qu-phrase">I&rsquo;m <select class="qu-sel" id="unc15" data-ans="wondering"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="thinking">thinking</option><option value="asking">asking</option><option value="wondering">wondering</option></select> &hellip;</div></div>
-      <div class="qrow" id="unc-row-16"><div class="qpv">How will we build up his stamina?</div><div class="qu-phrase">I haven&rsquo;t <select class="qu-sel" id="unc16" data-ans="got"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="had">had</option><option value="found">found</option><option value="got">got</option></select> a clue&hellip;</div></div>
-      <div class="qrow" id="unc-row-17"><div class="qpv">Why did the striker pull out early?</div><div class="qu-phrase">I&rsquo;m having <select class="qu-sel" id="unc17" data-ans="trouble"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="fun">fun</option><option value="no problem">no problem</option><option value="trouble">trouble</option></select> seeing&hellip;</div></div>
-      <div class="qrow" id="unc-row-18"><div class="qpv">When will his performance drop off?</div><div class="qu-phrase">I&rsquo;ve <select class="qu-sel" id="unc18" data-ans="no"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="any">any</option><option value="every">every</option><option value="no">no</option></select> idea&hellip;</div></div>
-      <div class="qrow" id="unc-row-19"><div class="qpv">How can we prevent burn out?</div><div class="qu-phrase">I&rsquo;m not exactly <select class="qu-sel" id="unc19" data-ans="sure"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="ready">ready</option><option value="right">right</option><option value="sure">sure</option></select> &hellip;</div></div>
-      <div class="qrow" id="unc-row-20"><div class="qpv">Why isn&rsquo;t he checking in today?</div><div class="qu-phrase">It <select class="qu-sel" id="unc20" data-ans="escapes"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="troubles">troubles</option><option value="worries">worries</option><option value="escapes">escapes</option></select> me&hellip;</div></div>
-
-      <div class="toolbar" style="margin-top:14px;">
-        <button class="btn small" onclick="uncCheck()">Check your answers</button>
-        <button class="btn ghost small" onclick="uncToggle()">See Answers</button>
-        <button class="btn warn small" onclick="uncReset()">&#x21BB; Reset</button>
-      </div>
-      <div id="unc-sfb" class="sfb"></div>
-      <div id="unc-key" class="ed-key" style="display:none;"></div>
-      <p style="margin-top:16px;font-size:14px;color:#475569;">&#x1F517; <strong>More practice:</strong> <a href="https://test-english.com/grammar-points/b1-b2/indirect-questions/" target="_blank" rel="noopener" style="color:#1d6fb8;">test-english.com &mdash; Indirect Questions</a></p>
-    </div>
-</div>
 
 </div>
 </div>
@@ -2603,6 +2537,16 @@ function s7Reset() {
   }
   document.getElementById('s7-score').textContent = '0 / 20';
   document.getElementById('s7-sfb').textContent = '';
+}
+function s7ShowAnswers() {
+  for (let i = 1; i <= 10; i++) {
+    ['dx','tx'].forEach(type => {
+      const sel = document.getElementById('s7' + type + i);
+      if (sel) { sel.value = sel.dataset.ans; sel.style.borderColor = '#22c55e'; sel.style.background = '#f0fdf4'; }
+    });
+  }
+  document.getElementById('s7-score').textContent = '20 / 20';
+  document.getElementById('s7-sfb').textContent = '✅ All answers revealed.';
 }
 
 
