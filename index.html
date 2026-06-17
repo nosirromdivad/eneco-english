@@ -44,7 +44,7 @@
 
   /* Class switcher */
 
-  .class-switcher{display:flex;gap:10px;margin:18px 0 0;justify-content:center}
+  .class-switcher{display:flex;gap:10px;margin:18px 0 0;justify-content:center;flex-wrap:wrap}
 
   .class-btn{padding:10px 28px;border-radius:30px;border:2px solid #EF0107;
 
@@ -379,6 +379,12 @@
 #c3 .qpv{font-weight:700;color:#1a1a1a;font-size:16px;}
 #c3 .qsent{margin:0;color:#334155;font-size:15px;line-height:1.5;}
 #c3 .qsel{padding:9px;border-radius:6px;border:1px solid #cbd5e1;width:100%;background:#fff;font-size:15px;font-family:inherit;transition:background .2s,border-color .2s;}
+.qu-phrase{font-size:15px;color:#334155;line-height:1.8;display:flex;flex-wrap:wrap;align-items:center;gap:4px;}
+.qu-sel{width:auto;min-width:130px;padding:5px 8px;font-size:14px;border-radius:6px;border:1px solid #cbd5e1;background:#fff;font-family:inherit;transition:border-color .2s,background .2s;}
+.unc-round-hdr{color:#9B0000;margin:20px 0 4px;font-size:16px;}
+.unc-ref{margin:10px 0 18px;border:1px solid #f0e0e0;border-radius:8px;padding:10px 14px;background:#fdf8f8;}
+.unc-ref summary{font-weight:600;cursor:pointer;color:#9B0000;font-size:14px;}
+.unc-list{margin:10px 0 0;padding-left:22px;color:#334155;font-size:14px;line-height:2;}
 
 
 /* ===== Session 4 — Watch & Read along ===== */
@@ -438,6 +444,15 @@
 #c5 .pdf-card a{display:inline-block;padding:7px 18px;background:#1d6fb8;color:#fff;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;}
 @media(min-width:760px){#c5 .s5-wrap{grid-template-columns:minmax(320px,1fr) 1.1fr;align-items:start;}}
 
+  /* ===== Session 7 — Rehab Scenarios ===== */
+  #c7{padding:14px;}
+  .s7-wrap{max-width:820px;margin:0 auto;}
+  .s7-row{border:1px solid #f0e0e0;border-radius:12px;padding:16px;margin-bottom:14px;background:#fdf8f8;}
+  .s7-num{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:#EF0107;margin-bottom:6px;}
+  .s7-complaint{font-size:15px;color:#1a1a1a;font-weight:600;line-height:1.5;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #f0e0e0;}
+  .s7-label{display:block;font-size:12px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.5px;margin:10px 0 4px;}
+  .s7-sel{width:100%;padding:9px 10px;border-radius:8px;border:1.5px solid #cbd5e1;background:#fff;font-size:14px;font-family:inherit;transition:border-color .2s,background .2s;}
+
   /* ===== Session 6 — Dialogue ordering ===== */
   #c6 .s6-note{background:#fff3cd;border:1px solid #ffe08a;border-radius:10px;padding:11px 15px;font-size:13.5px;color:#5a4000;margin-bottom:14px;}
   #c6 .s6-nav{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0;background:var(--card);padding:8px;border:1px solid var(--line);border-radius:12px;}
@@ -487,7 +502,8 @@
 
     <button class="class-btn" onclick="switchClass('c4',this)">Session 4</button>
     <button class="class-btn" onclick="switchClass('c5',this)">Session 5</button>
-    <button class="class-btn" onclick="switchClass('c6',this)">Session 6</button>
+        <button class="class-btn" onclick="switchClass('c6',this)">Session 6</button>
+        <button class="class-btn" onclick="switchClass('c7',this)">Session 7</button>
 
   </div>
 
@@ -982,8 +998,7 @@
     </div>
   </div>
 
-</div>
-<div class="class-panel" id="c4">
+  <div class="class-panel" id="c4">
   <div class="s4-wrap">
     <div class="s4-video">
       <div class="ratio">
@@ -1233,6 +1248,233 @@
     </div>
   </div>
 
+</div>
+
+</div>
+
+<div class="class-panel" id="c7">
+<div style="padding:14px;max-width:820px;margin:0 auto;">
+
+<div class="card">
+      <h2 style="color:#9B0000;margin:0 0 6px;">&#x1FA79; Rehabilitation Scenarios</h2>
+      <p class="lead">Read each player complaint. Choose the correct <strong>diagnosis</strong> and <strong>treatment technology</strong> from the three options given.</p>
+      <div class="toolbar" style="margin-bottom:14px;">
+        <button class="btn small" onclick="s7Check()">Check</button>
+        <button class="btn warn small" onclick="s7Reset()">&#x21BB; Reset</button>
+        <span class="score" id="s7-score">0 / 20</span>
+      </div>
+      <div class="s7-row" id="s7r1">
+        <div class="s7-num">Scenario 1</div>
+        <div class="s7-complaint">Sharp pain in the back of the thigh during a sprint.</div>
+        <label class="s7-label">&#x1FA79; Diagnosis</label>
+        <select class="s7-sel" id="s7dx1" data-ans="Grade II Hamstring Strain">
+          <option value="">— choose —</option>
+          <option value="Quadriceps Contusion">Quadriceps Contusion</option><option value="Lumbar Radiculopathy">Lumbar Radiculopathy</option><option value="Grade II Hamstring Strain">Grade II Hamstring Strain</option>
+        </select>
+        <label class="s7-label">&#x1F9EC; Treatment Technology</label>
+        <select class="s7-sel" id="s7tx1" data-ans="Class IV High-Intensity Laser Therapy (HILT)">
+          <option value="">— choose —</option>
+          <option value="Acoustic Shockwave Therapy">Acoustic Shockwave Therapy</option><option value="Class IV High-Intensity Laser Therapy (HILT)">Class IV High-Intensity Laser Therapy (HILT)</option><option value="Hyperbaric Oxygen Therapy (HBOT)">Hyperbaric Oxygen Therapy (HBOT)</option>
+        </select>
+      </div>
+      <div class="s7-row" id="s7r2">
+        <div class="s7-num">Scenario 2</div>
+        <div class="s7-complaint">"Pop" in the knee with rapid swelling and instability.</div>
+        <label class="s7-label">&#x1FA79; Diagnosis</label>
+        <select class="s7-sel" id="s7dx2" data-ans="Anterior Cruciate Ligament (ACL) Rupture">
+          <option value="">— choose —</option>
+          <option value="Anterior Cruciate Ligament (ACL) Rupture">Anterior Cruciate Ligament (ACL) Rupture</option><option value="Patellar Tendinopathy">Patellar Tendinopathy</option><option value="Medial Meniscus Tear">Medial Meniscus Tear</option>
+        </select>
+        <label class="s7-label">&#x1F9EC; Treatment Technology</label>
+        <select class="s7-sel" id="s7tx2" data-ans="Robotic-assisted gait trainers">
+          <option value="">— choose —</option>
+          <option value="BlazePod cognitive-motor training">BlazePod cognitive-motor training</option><option value="Wearable IMU sensors">Wearable IMU sensors</option><option value="Robotic-assisted gait trainers">Robotic-assisted gait trainers</option>
+        </select>
+      </div>
+      <div class="s7-row" id="s7r3">
+        <div class="s7-num">Scenario 3</div>
+        <div class="s7-complaint">Lingering dull heel pain, worse in the morning.</div>
+        <label class="s7-label">&#x1FA79; Diagnosis</label>
+        <select class="s7-sel" id="s7dx3" data-ans="Plantar Fasciitis">
+          <option value="">— choose —</option>
+          <option value="Stress Fracture (Calcaneus)">Stress Fracture (Calcaneus)</option><option value="Achilles Tendinopathy">Achilles Tendinopathy</option><option value="Plantar Fasciitis">Plantar Fasciitis</option>
+        </select>
+        <label class="s7-label">&#x1F9EC; Treatment Technology</label>
+        <select class="s7-sel" id="s7tx3" data-ans="Acoustic Shockwave Therapy">
+          <option value="">— choose —</option>
+          <option value="Pulsed Electromagnetic Field (PEMF) Therapy">Pulsed Electromagnetic Field (PEMF) Therapy</option><option value="Acoustic Shockwave Therapy">Acoustic Shockwave Therapy</option><option value="Diagnostic Musculoskeletal Ultrasound">Diagnostic Musculoskeletal Ultrasound</option>
+        </select>
+      </div>
+      <div class="s7-row" id="s7r4">
+        <div class="s7-num">Scenario 4</div>
+        <div class="s7-complaint">Total exhaustion, poor sleep, and high resting heart rate after 6 weeks of double sessions.</div>
+        <label class="s7-label">&#x1FA79; Diagnosis</label>
+        <select class="s7-sel" id="s7dx4" data-ans="Overtraining Syndrome">
+          <option value="">— choose —</option>
+          <option value="Neuromuscular Fatigue">Neuromuscular Fatigue</option><option value="Overtraining Syndrome">Overtraining Syndrome</option><option value="Iron-deficiency Anaemia">Iron-deficiency Anaemia</option>
+        </select>
+        <label class="s7-label">&#x1F9EC; Treatment Technology</label>
+        <select class="s7-sel" id="s7tx4" data-ans="Hyperbaric Oxygen Therapy (HBOT)">
+          <option value="">— choose —</option>
+          <option value="Class IV High-Intensity Laser Therapy (HILT)">Class IV High-Intensity Laser Therapy (HILT)</option><option value="Hyperbaric Oxygen Therapy (HBOT)">Hyperbaric Oxygen Therapy (HBOT)</option><option value="Virtual Reality (VR) Immersive Training">Virtual Reality (VR) Immersive Training</option>
+        </select>
+      </div>
+      <div class="s7-row" id="s7r5">
+        <div class="s7-num">Scenario 5</div>
+        <div class="s7-complaint">Ankle sprain that has stopped improving; mobility is decreasing.</div>
+        <label class="s7-label">&#x1FA79; Diagnosis</label>
+        <select class="s7-sel" id="s7dx5" data-ans="Chronic Ankle Instability">
+          <option value="">— choose —</option>
+          <option value="Chronic Ankle Instability">Chronic Ankle Instability</option><option value="Syndesmosis Sprain">Syndesmosis Sprain</option><option value="Peroneal Tendon Tear">Peroneal Tendon Tear</option>
+        </select>
+        <label class="s7-label">&#x1F9EC; Treatment Technology</label>
+        <select class="s7-sel" id="s7tx5" data-ans="Wearable IMU sensors for real-time biomechanical feedback">
+          <option value="">— choose —</option>
+          <option value="Acoustic Shockwave Therapy">Acoustic Shockwave Therapy</option><option value="Robotic-assisted gait trainers">Robotic-assisted gait trainers</option><option value="Wearable IMU sensors for real-time biomechanical feedback">Wearable IMU sensors for real-time biomechanical feedback</option>
+        </select>
+      </div>
+      <div class="s7-row" id="s7r6">
+        <div class="s7-num">Scenario 6</div>
+        <div class="s7-complaint">Sudden "clunk" in the calf while jumping; unable to push off.</div>
+        <label class="s7-label">&#x1FA79; Diagnosis</label>
+        <select class="s7-sel" id="s7dx6" data-ans="Gastrocnemius (Calf) Tear">
+          <option value="">— choose —</option>
+          <option value="Achilles Tendon Rupture">Achilles Tendon Rupture</option><option value="Gastrocnemius (Calf) Tear">Gastrocnemius (Calf) Tear</option><option value="Deep Vein Thrombosis">Deep Vein Thrombosis</option>
+        </select>
+        <label class="s7-label">&#x1F9EC; Treatment Technology</label>
+        <select class="s7-sel" id="s7tx6" data-ans="Pulsed Electromagnetic Field (PEMF) Therapy">
+          <option value="">— choose —</option>
+          <option value="Pulsed Electromagnetic Field (PEMF) Therapy">Pulsed Electromagnetic Field (PEMF) Therapy</option><option value="Acoustic Shockwave Therapy">Acoustic Shockwave Therapy</option><option value="Hyperbaric Oxygen Therapy (HBOT)">Hyperbaric Oxygen Therapy (HBOT)</option>
+        </select>
+      </div>
+      <div class="s7-row" id="s7r7">
+        <div class="s7-num">Scenario 7</div>
+        <div class="s7-complaint">Persistent lower back pain flaring up during weight training.</div>
+        <label class="s7-label">&#x1FA79; Diagnosis</label>
+        <select class="s7-sel" id="s7dx7" data-ans="Lumbar Spondylolysis / Mechanical Low Back Pain">
+          <option value="">— choose —</option>
+          <option value="Sacroiliac Joint Dysfunction">Sacroiliac Joint Dysfunction</option><option value="Lumbar Spondylolysis / Mechanical Low Back Pain">Lumbar Spondylolysis / Mechanical Low Back Pain</option><option value="Disc Herniation (L4–L5)">Disc Herniation (L4–L5)</option>
+        </select>
+        <label class="s7-label">&#x1F9EC; Treatment Technology</label>
+        <select class="s7-sel" id="s7tx7" data-ans="Surface Electromyography (sEMG) sensors">
+          <option value="">— choose —</option>
+          <option value="Surface Electromyography (sEMG) sensors">Surface Electromyography (sEMG) sensors</option><option value="Wearable IMU sensors">Wearable IMU sensors</option><option value="Diagnostic Musculoskeletal Ultrasound">Diagnostic Musculoskeletal Ultrasound</option>
+        </select>
+      </div>
+      <div class="s7-row" id="s7r8">
+        <div class="s7-num">Scenario 8</div>
+        <div class="s7-complaint">Significant decrease in passing accuracy and reaction time in the final 20 minutes of matches.</div>
+        <label class="s7-label">&#x1FA79; Diagnosis</label>
+        <select class="s7-sel" id="s7dx8" data-ans="Neuromuscular Fatigue">
+          <option value="">— choose —</option>
+          <option value="Neuromuscular Fatigue">Neuromuscular Fatigue</option><option value="Mild Concussion">Mild Concussion</option><option value="Overtraining Syndrome">Overtraining Syndrome</option>
+        </select>
+        <label class="s7-label">&#x1F9EC; Treatment Technology</label>
+        <select class="s7-sel" id="s7tx8" data-ans="BlazePod cognitive-motor training">
+          <option value="">— choose —</option>
+          <option value="Wearable IMU sensors">Wearable IMU sensors</option><option value="BlazePod cognitive-motor training">BlazePod cognitive-motor training</option><option value="Virtual Reality (VR) Immersive Training">Virtual Reality (VR) Immersive Training</option>
+        </select>
+      </div>
+      <div class="s7-row" id="s7r9">
+        <div class="s7-num">Scenario 9</div>
+        <div class="s7-complaint">Deep quad bruise that is hard to the touch and restricts movement.</div>
+        <label class="s7-label">&#x1FA79; Diagnosis</label>
+        <select class="s7-sel" id="s7dx9" data-ans="Myositis Ossificans (post-contusion)">
+          <option value="">— choose —</option>
+          <option value="Myositis Ossificans (post-contusion)">Myositis Ossificans (post-contusion)</option><option value="Femoral Stress Fracture">Femoral Stress Fracture</option><option value="Grade III Quadriceps Strain">Grade III Quadriceps Strain</option>
+        </select>
+        <label class="s7-label">&#x1F9EC; Treatment Technology</label>
+        <select class="s7-sel" id="s7tx9" data-ans="Diagnostic Musculoskeletal Ultrasound">
+          <option value="">— choose —</option>
+          <option value="Diagnostic Musculoskeletal Ultrasound">Diagnostic Musculoskeletal Ultrasound</option><option value="Class IV High-Intensity Laser Therapy (HILT)">Class IV High-Intensity Laser Therapy (HILT)</option><option value="Pulsed Electromagnetic Field (PEMF) Therapy">Pulsed Electromagnetic Field (PEMF) Therapy</option>
+        </select>
+      </div>
+      <div class="s7-row" id="s7r10">
+        <div class="s7-num">Scenario 10</div>
+        <div class="s7-complaint">Cleared for jogging but needs preparation for contact training.</div>
+        <label class="s7-label">&#x1FA79; Diagnosis</label>
+        <select class="s7-sel" id="s7dx10" data-ans="Post-Acute Return-to-Play Readiness">
+          <option value="">— choose —</option>
+          <option value="Post-Acute Return-to-Play Readiness">Post-Acute Return-to-Play Readiness</option><option value="Functional Movement Screening">Functional Movement Screening</option><option value="Chronic Ankle Instability">Chronic Ankle Instability</option>
+        </select>
+        <label class="s7-label">&#x1F9EC; Treatment Technology</label>
+        <select class="s7-sel" id="s7tx10" data-ans="Virtual Reality (VR) Immersive Training">
+          <option value="">— choose —</option>
+          <option value="Virtual Reality (VR) Immersive Training">Virtual Reality (VR) Immersive Training</option><option value="BlazePod cognitive-motor training">BlazePod cognitive-motor training</option><option value="Robotic-assisted gait trainers">Robotic-assisted gait trainers</option>
+        </select>
+      </div>
+      <div id="s7-sfb" class="sfb" style="margin-top:14px;"></div>
+    </div>
+
+<div style="margin-top:24px;">
+<div class="card">
+      <h2 style="color:#9B0000;margin:0 0 6px;">&#x1F914; Expressing Uncertainty</h2>
+      <p class="lead">A physio asks a question. Complete the uncertain response by choosing the missing word.</p>
+
+      <details class="unc-ref">
+        <summary>&#x1F4D6; 20 ways to say &ldquo;I don&rsquo;t know&rdquo; &mdash; click to expand</summary>
+        <ol class="unc-list">
+          <li>I&rsquo;m not sure&hellip;</li>
+          <li>It&rsquo;s unclear to me&hellip;</li>
+          <li>I&rsquo;m puzzled about&hellip;</li>
+          <li>I have yet to find out&hellip;</li>
+          <li>I can&rsquo;t quite figure out&hellip;</li>
+          <li>I&rsquo;m in the dark about&hellip;</li>
+          <li>I&rsquo;m really not certain&hellip;</li>
+          <li>It&rsquo;s a mystery to me&hellip;</li>
+          <li>I can&rsquo;t seem to grasp&hellip;</li>
+          <li>I haven&rsquo;t the slightest idea&hellip;</li>
+          <li>I find it hard to understand&hellip;</li>
+          <li>I&rsquo;m struggling to pinpoint&hellip;</li>
+          <li>It&rsquo;s not clear to me&hellip;</li>
+          <li>I am at a loss as to&hellip;</li>
+          <li>I&rsquo;m wondering&hellip;</li>
+          <li>I haven&rsquo;t got a clue&hellip;</li>
+          <li>I&rsquo;m having trouble seeing&hellip;</li>
+          <li>I&rsquo;ve no idea&hellip;</li>
+          <li>I&rsquo;m not exactly sure&hellip;</li>
+          <li>It escapes me&hellip;</li>
+        </ol>
+      </details>
+
+      <h3 class="unc-round-hdr">Round 1</h3>
+
+      <div class="qrow" id="unc-row-1"><div class="qpv">Why did he break down?</div><div class="qu-phrase">I&rsquo;m not <select class="qu-sel" id="unc1" data-ans="sure"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="ready">ready</option><option value="sure">sure</option><option value="late">late</option></select> &hellip;</div></div>
+      <div class="qrow" id="unc-row-2"><div class="qpv">When should we check in?</div><div class="qu-phrase">It&rsquo;s <select class="qu-sel" id="unc2" data-ans="unclear"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="easy">easy</option><option value="obvious">obvious</option><option value="unclear">unclear</option></select> to me&hellip;</div></div>
+      <div class="qrow" id="unc-row-3"><div class="qpv">How do we build up his load?</div><div class="qu-phrase">I&rsquo;m <select class="qu-sel" id="unc3" data-ans="puzzled"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="certain">certain</option><option value="excited">excited</option><option value="puzzled">puzzled</option></select> about&hellip;</div></div>
+      <div class="qrow" id="unc-row-4"><div class="qpv">Who will draw up the plan?</div><div class="qu-phrase">I have <select class="qu-sel" id="unc4" data-ans="yet"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="already">already</option><option value="just">just</option><option value="yet">yet</option></select> to find out&hellip;</div></div>
+      <div class="qrow" id="unc-row-5"><div class="qpv">Why did she pull out?</div><div class="qu-phrase">I can&rsquo;t quite <select class="qu-sel" id="unc5" data-ans="figure"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="guess">guess</option><option value="think">think</option><option value="figure">figure</option></select> out&hellip;</div></div>
+      <div class="qrow" id="unc-row-6"><div class="qpv">How much should we cut back?</div><div class="qu-phrase">I&rsquo;m in the <select class="qu-sel" id="unc6" data-ans="dark"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="loop">loop</option><option value="know">know</option><option value="dark">dark</option></select> about&hellip;</div></div>
+      <div class="qrow" id="unc-row-7"><div class="qpv">Can we rule out a tear?</div><div class="qu-phrase">I&rsquo;m really not <select class="qu-sel" id="unc7" data-ans="certain"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="worried">worried</option><option value="aware">aware</option><option value="certain">certain</option></select> &hellip;</div></div>
+      <div class="qrow" id="unc-row-8"><div class="qpv">Where did you carry out the test?</div><div class="qu-phrase">It&rsquo;s a <select class="qu-sel" id="unc8" data-ans="mystery"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="surprise">surprise</option><option value="concern">concern</option><option value="mystery">mystery</option></select> to me&hellip;</div></div>
+      <div class="qrow" id="unc-row-9"><div class="qpv">Why did his fitness drop off?</div><div class="qu-phrase">I can&rsquo;t seem to <select class="qu-sel" id="unc9" data-ans="grasp"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="explain">explain</option><option value="predict">predict</option><option value="grasp">grasp</option></select> &hellip;</div></div>
+      <div class="qrow" id="unc-row-10"><div class="qpv">Who is going to check in with him?</div><div class="qu-phrase">I haven&rsquo;t the <select class="qu-sel" id="unc10" data-ans="slightest"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="greatest">greatest</option><option value="fullest">fullest</option><option value="slightest">slightest</option></select> idea&hellip;</div></div>
+
+      <h3 class="unc-round-hdr">Round 2</h3>
+
+      <div class="qrow" id="unc-row-11"><div class="qpv">Why did they cut back the intensity?</div><div class="qu-phrase">I find it <select class="qu-sel" id="unc11" data-ans="hard"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="easy">easy</option><option value="important">important</option><option value="hard">hard</option></select> to understand&hellip;</div></div>
+      <div class="qrow" id="unc-row-12"><div class="qpv">When did the player break down?</div><div class="qu-phrase">I&rsquo;m <select class="qu-sel" id="unc12" data-ans="struggling"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="trying">trying</option><option value="hoping">hoping</option><option value="struggling">struggling</option></select> to pinpoint&hellip;</div></div>
+      <div class="qrow" id="unc-row-13"><div class="qpv">How did you draw up this schedule?</div><div class="qu-phrase">It&rsquo;s not <select class="qu-sel" id="unc13" data-ans="clear"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="right">right</option><option value="finished">finished</option><option value="clear">clear</option></select> to me&hellip;</div></div>
+      <div class="qrow" id="unc-row-14"><div class="qpv">Why must we rule out contact drills?</div><div class="qu-phrase">I am at a <select class="qu-sel" id="unc14" data-ans="loss"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="gain">gain</option><option value="guess">guess</option><option value="loss">loss</option></select> as to&hellip;</div></div>
+      <div class="qrow" id="unc-row-15"><div class="qpv">Where did you carry out the assessment?</div><div class="qu-phrase">I&rsquo;m <select class="qu-sel" id="unc15" data-ans="wondering"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="thinking">thinking</option><option value="asking">asking</option><option value="wondering">wondering</option></select> &hellip;</div></div>
+      <div class="qrow" id="unc-row-16"><div class="qpv">How will we build up his stamina?</div><div class="qu-phrase">I haven&rsquo;t <select class="qu-sel" id="unc16" data-ans="got"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="had">had</option><option value="found">found</option><option value="got">got</option></select> a clue&hellip;</div></div>
+      <div class="qrow" id="unc-row-17"><div class="qpv">Why did the striker pull out early?</div><div class="qu-phrase">I&rsquo;m having <select class="qu-sel" id="unc17" data-ans="trouble"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="fun">fun</option><option value="no problem">no problem</option><option value="trouble">trouble</option></select> seeing&hellip;</div></div>
+      <div class="qrow" id="unc-row-18"><div class="qpv">When will his performance drop off?</div><div class="qu-phrase">I&rsquo;ve <select class="qu-sel" id="unc18" data-ans="no"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="any">any</option><option value="every">every</option><option value="no">no</option></select> idea&hellip;</div></div>
+      <div class="qrow" id="unc-row-19"><div class="qpv">How can we prevent burn out?</div><div class="qu-phrase">I&rsquo;m not exactly <select class="qu-sel" id="unc19" data-ans="sure"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="ready">ready</option><option value="right">right</option><option value="sure">sure</option></select> &hellip;</div></div>
+      <div class="qrow" id="unc-row-20"><div class="qpv">Why isn&rsquo;t he checking in today?</div><div class="qu-phrase">It <select class="qu-sel" id="unc20" data-ans="escapes"><option value="">&#x2015;&#x2015;&#x2015;</option><option value="troubles">troubles</option><option value="worries">worries</option><option value="escapes">escapes</option></select> me&hellip;</div></div>
+
+      <div class="toolbar" style="margin-top:14px;">
+        <button class="btn small" onclick="uncCheck()">Check your answers</button>
+        <button class="btn ghost small" onclick="uncToggle()">See Answers</button>
+        <button class="btn warn small" onclick="uncReset()">&#x21BB; Reset</button>
+      </div>
+      <div id="unc-sfb" class="sfb"></div>
+      <div id="unc-key" class="ed-key" style="display:none;"></div>
+      <p style="margin-top:16px;font-size:14px;color:#475569;">&#x1F517; <strong>More practice:</strong> <a href="https://test-english.com/grammar-points/b1-b2/indirect-questions/" target="_blank" rel="noopener" style="color:#1d6fb8;">test-english.com &mdash; Indirect Questions</a></p>
+    </div>
+</div>
+
+</div>
 </div>
 
 <div class="class-panel" id="c6">
@@ -1818,6 +2060,35 @@ const data = {
 
   ],
 
+  /* ===== Session 7 — Rehab Scenarios ===== */
+
+  s7: {
+    terms: [
+      {id:1,  t:"Sharp pain in the back of the thigh during a sprint.", a:"A"},
+      {id:2,  t:'&ldquo;Pop&rdquo; in the knee with rapid swelling and instability.', a:"B"},
+      {id:3,  t:"Lingering dull heel pain, worse in the morning.", a:"C"},
+      {id:4,  t:"Total exhaustion, poor sleep, and high resting heart rate after 6 weeks of double sessions.", a:"D"},
+      {id:5,  t:"Ankle sprain that has stopped improving; mobility is decreasing.", a:"E"},
+      {id:6,  t:'Sudden &ldquo;clunk&rdquo; in the calf while jumping; unable to push off.', a:"F"},
+      {id:7,  t:"Persistent lower back pain flaring up during weight training.", a:"G"},
+      {id:8,  t:"Significant decrease in passing accuracy / reaction time in the final 20 minutes of matches.", a:"H"},
+      {id:9,  t:"Deep quad bruise that is hard to the touch and restricts movement.", a:"I"},
+      {id:10, t:"Cleared for jogging but needs preparation for contact training.", a:"J"}
+    ],
+    defs: [
+      {k:"A", d:"<strong>Grade II Hamstring Strain</strong> &mdash; Class IV High-Intensity Laser Therapy (HILT)"},
+      {k:"B", d:"<strong>ACL Rupture</strong> &mdash; Robotic-assisted gait trainers"},
+      {k:"C", d:"<strong>Plantar Fasciitis</strong> &mdash; Acoustic Shockwave Therapy"},
+      {k:"D", d:"<strong>Overtraining Syndrome</strong> &mdash; Hyperbaric Oxygen Therapy (HBOT)"},
+      {k:"E", d:"<strong>Chronic Ankle Instability</strong> &mdash; Wearable IMU sensors for balance training"},
+      {k:"F", d:"<strong>Gastrocnemius (Calf) Tear</strong> &mdash; Pulsed Electromagnetic Field (PEMF) Therapy"},
+      {k:"G", d:"<strong>Lumbar Spondylolysis / Mechanical Low Back Pain</strong> &mdash; Surface EMG (sEMG) sensors"},
+      {k:"H", d:"<strong>Neuromuscular Fatigue</strong> &mdash; BlazePod cognitive-motor training"},
+      {k:"I", d:"<strong>Myositis Ossificans (post-contusion)</strong> &mdash; Diagnostic Musculoskeletal Ultrasound"},
+      {k:"J", d:"<strong>Post-Acute Return-to-Play Readiness</strong> &mdash; Virtual Reality (VR) Immersive Training"}
+    ]
+  },
+
 };
 
 
@@ -2303,6 +2574,40 @@ function resetAll(){
 
 ['p7','p9'].forEach(renderMatchSection);
 
+/* ===== Session 7 — Rehab Scenarios ===== */
+function s7Check() {
+  let ok = 0, tot = 0;
+  for (let i = 1; i <= 10; i++) {
+    ['dx','tx'].forEach(type => {
+      tot++;
+      const sel = document.getElementById('s7' + type + i);
+      const row = document.getElementById('s7r' + i);
+      if (!sel) return;
+      if (sel.value === sel.dataset.ans) {
+        ok++;
+        sel.style.borderColor = '#22c55e'; sel.style.background = '#f0fdf4';
+      } else {
+        sel.style.borderColor = '#ef4444'; sel.style.background = '#fff1f2';
+      }
+    });
+  }
+  document.getElementById('s7-score').textContent = ok + ' / ' + tot;
+  document.getElementById('s7-sfb').textContent = ok === tot ? '✅ Perfect score!' : ok + ' of ' + tot + ' correct — keep going!';
+}
+function s7Reset() {
+  for (let i = 1; i <= 10; i++) {
+    ['dx','tx'].forEach(type => {
+      const sel = document.getElementById('s7' + type + i);
+      if (sel) { sel.value = ''; sel.style.borderColor = ''; sel.style.background = ''; }
+    });
+  }
+  document.getElementById('s7-score').textContent = '0 / 20';
+  document.getElementById('s7-sfb').textContent = '';
+}
+
+
+/* no s7 init needed — static HTML */
+
 
 /* =========================  RONDOS DATA  ========================= */
 const rondosPool = [
@@ -2404,7 +2709,89 @@ function checkRondos(){
   document.getElementById('rondos-score').textContent = `${correct} / 10`;
 }
 
+/* ===== Expressing Uncertainty ===== */
+function uncCheck() {
+  let ok = 0, tot = 0;
+  document.querySelectorAll('.qu-sel').forEach(sel => {
+    tot++;
+    const n = sel.id.replace('unc','');
+    const row = document.getElementById('unc-row-' + n);
+    if (sel.value === sel.dataset.ans) {
+      ok++;
+      if(row) row.style.background = '#f0fdf4';
+      sel.style.borderColor = '#22c55e';
+    } else {
+      if(row) row.style.background = '#fff1f2';
+      sel.style.borderColor = '#ef4444';
+    }
+  });
+  document.getElementById('unc-sfb').textContent = 'Uncertainty: ' + ok + ' / ' + tot + ' correct.';
+}
+function uncReset() {
+  document.querySelectorAll('.qu-sel').forEach(sel => {
+    sel.value = '';
+    sel.style.borderColor = '';
+    const n = sel.id.replace('unc','');
+    const row = document.getElementById('unc-row-' + n);
+    if(row) row.style.background = '';
+  });
+  document.getElementById('unc-sfb').textContent = '';
+  const key = document.getElementById('unc-key');
+  if(key){ key.innerHTML = ''; key.style.display = 'none'; }
+}
+function uncToggle() {
+  const key = document.getElementById('unc-key');
+  if(!key) return;
+  if(key.style.display === 'block'){ key.style.display = 'none'; return; }
+  const answers = [
+    {n:1, q:'Why did he break down?', phrase:"I'm not <strong>sure</strong> …"},
+    {n:2, q:'When should we check in?', phrase:"It's <strong>unclear</strong> to me…"},
+    {n:3, q:'How do we build up his load?', phrase:"I'm <strong>puzzled</strong> about…"},
+    {n:4, q:'Who will draw up the plan?', phrase:"I have <strong>yet</strong> to find out…"},
+    {n:5, q:'Why did she pull out?', phrase:"I can't quite <strong>figure</strong> out…"},
+    {n:6, q:'How much should we cut back?', phrase:"I'm in the <strong>dark</strong> about…"},
+    {n:7, q:'Can we rule out a tear?', phrase:"I'm really not <strong>certain</strong> …"},
+    {n:8, q:'Where did you carry out the test?', phrase:"It's a <strong>mystery</strong> to me…"},
+    {n:9, q:'Why did his fitness drop off?', phrase:"I can't seem to <strong>grasp</strong> …"},
+    {n:10, q:'Who is going to check in with him?', phrase:"I haven't the <strong>slightest</strong> idea…"},
+    {n:11, q:'Why did they cut back the intensity?', phrase:"I find it <strong>hard</strong> to understand…"},
+    {n:12, q:'When did the player break down?', phrase:"I'm <strong>struggling</strong> to pinpoint…"},
+    {n:13, q:'How did you draw up this schedule?', phrase:"It's not <strong>clear</strong> to me…"},
+    {n:14, q:'Why must we rule out contact drills?', phrase:"I am at a <strong>loss</strong> as to…"},
+    {n:15, q:'Where did you carry out the assessment?', phrase:"I'm <strong>wondering</strong> …"},
+    {n:16, q:'How will we build up his stamina?', phrase:"I haven't <strong>got</strong> a clue…"},
+    {n:17, q:'Why did the striker pull out early?', phrase:"I'm having <strong>trouble</strong> seeing…"},
+    {n:18, q:'When will his performance drop off?', phrase:"I've <strong>no</strong> idea…"},
+    {n:19, q:'How can we prevent burn out?', phrase:"I'm not exactly <strong>sure</strong> …"},
+    {n:20, q:'Why isn\'t he checking in today?', phrase:"It <strong>escapes</strong> me…"}
+  ];
+  key.innerHTML = answers.map(a => '<strong>' + a.n + '.</strong> ' + a.q + ' → ' + a.phrase + '<br>').join('');
+  key.style.display = 'block';
+}
+
 /* ===== MIXED RONDOS DATA ===== */
+const UNCERTAINTY_POOL = [
+  {q:'Why did he break down?',         pre:"I'm not",          ans:'sure',      post:'\u2026', opts:['sure','ready','late']},
+  {q:'When should we check in?',       pre:"It's",             ans:'unclear',   post:'to me\u2026', opts:['unclear','obvious','easy']},
+  {q:'How do we build up his load?',   pre:"I'm",              ans:'puzzled',   post:'about\u2026', opts:['puzzled','certain','excited']},
+  {q:'Who will draw up the plan?',     pre:'I have',           ans:'yet',       post:'to find out\u2026', opts:['yet','already','just']},
+  {q:'Why did she pull out?',          pre:"I can't quite",    ans:'figure',    post:'out\u2026', opts:['figure','guess','think']},
+  {q:'How much should we cut back?',   pre:"I'm in the",       ans:'dark',      post:'about\u2026', opts:['dark','loop','know']},
+  {q:"Can we rule out a tear?",        pre:"I'm really not",   ans:'certain',   post:'\u2026', opts:['certain','worried','aware']},
+  {q:'Where did you carry out the test?', pre:"It's a",        ans:'mystery',   post:'to me\u2026', opts:['mystery','surprise','concern']},
+  {q:'Why did his fitness drop off?',  pre:"I can't seem to",  ans:'grasp',     post:'\u2026', opts:['grasp','explain','predict']},
+  {q:'Who is checking in with him?',   pre:"I haven't the",    ans:'slightest', post:'idea\u2026', opts:['slightest','greatest','fullest']},
+  {q:'Why did they cut back?',         pre:'I find it',        ans:'hard',      post:'to understand\u2026', opts:['hard','easy','important']},
+  {q:'When did the player break down?',pre:"I'm",              ans:'struggling',post:'to pinpoint\u2026', opts:['struggling','trying','hoping']},
+  {q:'How was this schedule drawn up?',pre:"It's not",         ans:'clear',     post:'to me\u2026', opts:['clear','right','finished']},
+  {q:'Why rule out contact drills?',   pre:'I am at a',        ans:'loss',      post:'as to\u2026', opts:['loss','gain','guess']},
+  {q:"How will we build up his stamina?", pre:"I haven't",     ans:'got',       post:'a clue\u2026', opts:['got','had','found']},
+  {q:'Why did the striker pull out?',  pre:"I'm having",       ans:'trouble',   post:'seeing\u2026', opts:['trouble','fun','luck']},
+  {q:'When will his performance drop off?', pre:"I've",        ans:'no',        post:'idea\u2026', opts:['no','any','every']},
+  {q:'How can we prevent burn out?',   pre:"I'm not exactly",  ans:'sure',      post:'\u2026', opts:['sure','ready','right']},
+  {q:"Why isn't he checking in today?", pre:'It',              ans:'escapes',   post:'me\u2026', opts:['escapes','troubles','worries']},
+];
+
 const PV_POOL = [
   {pv:"Check in",    opts:["To analyze complex data","To monitor a player's progress regularly","To finish a training session"],         ans:"To monitor a player's progress regularly"},
   {pv:"Build up",   opts:["To gradually increase fitness or intensity","To remove equipment from the pitch","To stop training completely"],   ans:"To gradually increase fitness or intensity"},
@@ -2442,6 +2829,11 @@ function buildMixedRondo() {
   ];
   shuffle(prepPool).slice(0, 2).forEach(q => {
     items.push({ type:'prep', label:'\ud83d\udcc5 Prepositions', sent:q.sentence, ans:q.ans, opts:q.opts, explain:q.hint });
+  });
+
+  // 2 uncertainty gap-fills
+  shuffle(UNCERTAINTY_POOL).slice(0, 2).forEach(q => {
+    items.push({ type:'unc', label:'🤔 Uncertainty', q:q.q, pre:q.pre, ans:q.ans, post:q.post, opts:shuffle([...q.opts]) });
   });
 
   // 2 phrasal verbs
@@ -2498,6 +2890,8 @@ function buildMixedRondo() {
       qHTML = '<span class="mr-q">' + item.sent.replace('_____', '<span class="mr-blank" id="mrb-' + i + '">_____</span>') + '</span>';
     } else if (item.type === 'prep') {
       qHTML = '<span class="mr-q">' + item.sent.replace('____', '<span class="mr-blank" id="mrb-' + i + '">____</span>') + '</span>';
+    } else if (item.type === 'unc') {
+      qHTML = '<span class="mr-q"><em style="color:#555;font-size:13px">' + item.q + '</em><br>Complete the response: <strong>' + item.pre + '</strong> ___ <strong>' + item.post + '</strong></span>';
     } else if (item.type === 'pv') {
       qHTML = '<span class="mr-q">What does <strong>' + item.pv + '</strong> mean in sports physio?</span>';
     } else if (item.type === 'ed') {
